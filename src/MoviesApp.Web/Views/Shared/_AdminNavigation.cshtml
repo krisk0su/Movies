@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MoviesApp.Data.Models
+@inject SignInManager<MoviesAppUser> SignInManager
+@inject UserManager<MoviesAppUser> UserManager
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a asp-controller="Movies" asp-action="Create" class="nav-link">
+                        Create Movie
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a asp-controller="Series" asp-action="Create" class="nav-link">
+                        Create Series
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a asp-controller="Movies" asp-action="Create" class="nav-link">
+                        Create Anime
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a asp-controller="Movies" asp-action="Create" class="nav-link">
+                        Create Anime
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+}

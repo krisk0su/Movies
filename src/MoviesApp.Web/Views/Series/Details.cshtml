@@ -1,0 +1,96 @@
+﻿@model DetailsSerieViewModel
+@{
+    ViewData["Title"] = "Display Series";
+}
+@inject SignInManager<MoviesAppUser> SignInManager
+<section class="py-5 bg-white">
+    <div class="container-fluid">
+        <!-- Heading -->
+        <div class="row">
+            <div class="col">
+                <div class="mb-5">
+                    <h1 class="text-dark text-center text-uppercase font-weight-bold"
+                        id="movie-title">
+                        @Model.Name
+                    </h1>
+                    <hr class="hr" />
+                </div>
+            </div>
+        </div>
+        @if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole("Admin"))
+        {
+            <div class="container d-flex justify-content-center">
+                <a asp-controller="SeriesEntity"
+                   asp-action="Create"
+                   asp-route-seriesId="@Model.Id"
+                   asp-route-name="@Model.Name"
+                   asp-route-poster="@Model.Poster"
+                   class="btn btn-primary"  role="button">Add Episode...</a>
+            </div>
+        }
+        <!-- Details -->
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="d-flex ">
+                    <img src="@Model.Poster" id="movie-poster" height="370" class="mr-2" />
+                    <div class="text-dark">
+                        <!-- Rating starts -->
+                        <div id="movie-rating" class="mb-2">
+                            <span class="font-weight-bold">Imdb Rating: @Model.Rating</span>
+                            @for (int i = 0; i < Model.GetStars(); i++)
+                            {
+                                <span class="fas fa-star text-yellow"></span>
+
+                            }
+                        </div>
+                        <!-- Genre -->
+                        <p class="mb-2">
+                            <span class="font-weight-bold">Genre: </span>
+                            <span id="movie-genre">@Model.DisplayCategories()</span>
+                        </p>
+                        <!-- actors -->
+                        <p class="mb-2">
+                            <span class="font-weight-bold">Actors: </span>
+                            <span id="movie-actors">@Model.GetActors()</span>
+                        </p>
+                        <!-- Release date -->
+                        <p class="mb-2">
+                            <span class="font-weight-bold">Release date: </span>
+                            <span id="movie-release-date">@Model.ReleaseDate</span>
+                        </p>
+                        <!-- Overview -->
+                        <p class="mb-2" id="movie-overview">
+                            <h4 class="text-center" id="Movie-description">Description</h4>
+                            <span class="font-weight-bold">@Model.Description</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Season</th>
+                            <th scope="col">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Link</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Link</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Link</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

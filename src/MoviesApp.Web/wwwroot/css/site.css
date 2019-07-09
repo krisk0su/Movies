@@ -1,0 +1,92 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+body {
+    font-family: "Raleway", sans-serif;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+}
+
+.hr {
+    width: 10%;
+    border: solid thin #e74c3c;
+}
+
+.seperator {
+    border: solid thin #999999;
+    margin: 0px 0.5em;
+}
+
+.heading-text {
+    font-family: "Courgette", cursive;
+}
+
+.fancy {
+    line-height: 0.5;
+    text-align: center;
+}
+
+.fancy span {
+    display: inline-block;
+    position: relative;
+}
+
+.fancy span:before,
+.fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-top: 1px solid white;
+    top: 50%;
+    width: 20vw;
+}
+
+.fancy span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.fancy span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+.text-yellow {
+    color: orange;
+}
+
+.sign-in,
+.register {
+    display: flex;
+    align-items: center;
+}
+
+.movie-img {
+    min-height: 350px;
+    max-height: 350px;
+}
+@media only screen and (max-width: 1200px) {
+    .movie-img {
+        max-height: 350px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .movie-img {
+        max-height: 360px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .movie-img {
+        max-height: 410px;
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .movie-img {
+        max-height: 475px;
+    }
+}

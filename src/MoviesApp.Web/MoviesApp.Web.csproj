@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-MoviesApp.Web-98269182-328E-476B-BF05-EDA1A1201F26</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\MoviesApp.Data.Models\MoviesApp.Data.Models.csproj" />
+    <ProjectReference Include="..\Data\MoviesApp.Data\MoviesApp.Data.csproj" />
+    <ProjectReference Include="..\Services\MoviesApp.Services.DataServices\MoviesApp.Services.DataServices.csproj" />
+    <ProjectReference Include="..\Services\MoviesApp.Services.Seeders\MoviesApp.Services.Seeders.csproj" />
+    <ProjectReference Include="..\ViewModels\MoviesApp.ViewModels\MoviesApp.ViewModels.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+</Project>

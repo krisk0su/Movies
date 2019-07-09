@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MoviesApp.Web</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    <link rel="stylesheet" href="~/css/theme.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/b4e9c718a8.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container-fluid">
+                <a asp-controller="Movies" asp-action="Movies" class="navbar-brand">MovieCenter</a>
+                <button class="navbar-toggler border-0"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="dropdown">
+                            <!-- Categories -->
+                            <partial name="_AllCategories" />
+                        </li>
+                        <li>
+                            <a class="navbar-brand p-2" asp-controller="Series" asp-Action="Series">Series</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline w-50" asp-controller="Search" asp-action="Search">
+                        <input name="name" class="form-control" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <partial name="_LoginPartial"/>
+                </div>
+            </div>
+        </nav>
+        <partial name="_AdminNavigation" />
+        
+    </header>
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="pb-2 pt-2">
+        @RenderBody()
+    </main>
+    <footer>
+        <div class="container-fluid bg-dark">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center">
+                    <a href="index.html" class="card-link">
+                        <img src="~/images/logo.png" alt="Logo" height="150" />
+                    </a>
+                    <p class="mb-0">© 2019 All Rights Reserved. Terms of Use.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
