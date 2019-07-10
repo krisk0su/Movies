@@ -1,5 +1,4 @@
-﻿
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace MoviesApp.Services.DataServices
 {
@@ -8,6 +7,9 @@ namespace MoviesApp.Services.DataServices
     using ViewModels.SeriesEntities;
     using MoviesApp.Data.Contracts;
     using Data.Models.Series;
+    using System.Linq;
+    using System;
+
 
     public class SeriesEntityService:ISeriesEntityService
     {
@@ -54,6 +56,40 @@ namespace MoviesApp.Services.DataServices
             };
 
             return viewModel;
+        }
+
+        public SeasonTableViewModel GetTable(Guid id)
+        {
+            var result = this._repository.All()
+                .Where(x => x.SeriesId == id)
+                .GroupBy(x => x.Season)
+                .Select(x => x.Key)
+                .ToList();
+
+            var viewModel = new SeasonTableViewModel(id, result);
+            return viewModel;
+        }
+
+        public SeasonEntitiesViewModel GetSeasonEntities(CreateSeasonViewModel model)
+        {
+            var entities = this._repository.All()
+                .Where(x => x.SeriesId == model.SeriesId && x.Season == model.Season)
+                .OrderBy(x => x.Season)
+                .ToList();
+
+            var tempCollection = new List<SeasonEntityViewModel>();
+
+            foreach (var entity in entities)
+            {
+                var temp = new SeasonEntityViewModel(entity.Id, 
+                    entity.Season,
+                    entity.Episode);
+
+                tempCollection.Add(temp);
+            }
+
+            var viewModel = new SeasonEntitiesViewModel();
+
         }
     }
 }

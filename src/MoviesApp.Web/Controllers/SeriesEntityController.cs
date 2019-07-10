@@ -37,5 +37,16 @@
             return this.View(viewModel);
         }
 
+        public IActionResult Season(Guid seriesId, int season)
+        {
+           var viewModel = new CreateSeasonViewModel(seriesId, season);
+           return this.View(viewModel);
+        }
+
+        public IActionResult Episode(int id)
+        {
+            var viewModel = new DisplayEpisodeViewModel();
+            return null;
+        }
     }
 }

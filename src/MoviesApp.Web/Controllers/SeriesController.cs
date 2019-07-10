@@ -1,13 +1,13 @@
-﻿using MoviesApp.ViewModels.Render;
-using MoviesApp.ViewModels.SeriesEntities;
-
-namespace MoviesApp.Web.Controllers
+﻿namespace MoviesApp.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using ViewModels.Series;
+    using ViewModels.Render;
+    using ViewModels.SeriesEntities;
     using Services.DataServices.Contracts;
     using System.Threading.Tasks;
     using System;
+
 
     public class SeriesController : Controller
     {
@@ -63,5 +63,7 @@ namespace MoviesApp.Web.Controllers
 
             return this.View(viewModel);
         }
+
+       
     }
 }

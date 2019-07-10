@@ -7,9 +7,6 @@
     {
         private readonly ISearchService _searchService;
 
-        //[BindProperty]
-        //public string name { get; set; }
-
         public SearchController(ISearchService search)
         {
             this._searchService = search;

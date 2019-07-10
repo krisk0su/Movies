@@ -1,17 +1,13 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Authorization;
-using MoviesApp.ViewModels.Render;
-using MoviesApp.Web.Models;
-
-namespace MoviesApp.Web.Controllers
+﻿namespace MoviesApp.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Services.DataServices.Contracts;
     using ViewModels.Movies;
+    using Microsoft.AspNetCore.Authorization;
+    using ViewModels.Render;
 
-    
     public class MoviesController:Controller
     {
         private readonly IMoviesService _moviesService;
