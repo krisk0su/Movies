@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MoviesApp.Services.Mapping;
+using MoviesApp.ViewModels.Contracts;
 using MoviesApp.ViewModels.Movies;
 using MoviesApp.ViewModels.Render;
 
@@ -65,7 +66,7 @@ namespace MoviesApp.Services.DataServices
 
         }
 
-        public DisplayAllMoviesViewModel GetMoviesByCategory(string categoryName)
+        public IEnumerable<IDisplayable> GetMoviesByCategory(string categoryName)
         {
             var movies = this._repository.All()
                 .Include(x => x.Category)
@@ -73,11 +74,9 @@ namespace MoviesApp.Services.DataServices
                 .Select(x => x.Movie)
                 .To<DisplayMovieViewModel>()
                 .ToList();
-            //TODO: must fix this
-            var viewModel = new DisplayAllMoviesViewModel(movies, new RenderViewModel(1 ,1,
-                "",""), 1);
-
-            return viewModel;
+           
+         
+            return movies;
         }
     }
 }

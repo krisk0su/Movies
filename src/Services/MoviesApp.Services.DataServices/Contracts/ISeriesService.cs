@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace MoviesApp.Services.DataServices.Contracts
+﻿namespace MoviesApp.Services.DataServices.Contracts
 {
     using ViewModels.Series;
     using System;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using MoviesApp.ViewModels.Contracts;
 
     public interface ISeriesService
     {
@@ -12,6 +12,6 @@ namespace MoviesApp.Services.DataServices.Contracts
 
         DetailsSerieViewModel GetSeries(Guid id);
 
-        IEnumerable<DisplaySerieViewModel> Series();
+        IEnumerable<IDisplayable> Series();
     }
 }

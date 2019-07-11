@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MoviesApp.ViewModels.Contracts;
 
 namespace MoviesApp.Services.DataServices
 {
@@ -70,7 +71,7 @@ namespace MoviesApp.Services.DataServices
 
         }
 
-        public IEnumerable<DisplayMovieViewModel> AllMovies()
+        public IEnumerable<IDisplayable> AllMovies()
         {
             var movies = this._repository
                 .All()

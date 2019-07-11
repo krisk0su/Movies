@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Channels;
-using MoviesApp.ViewModels.Movies;
+﻿using MoviesApp.ViewModels.Render;
 
 namespace MoviesApp.Web.Controllers
 {
@@ -50,10 +48,20 @@ namespace MoviesApp.Web.Controllers
         
         public IActionResult MoviesByCategory(string name)
         {
-            
-            var viewModel = this._moviesCategoriesService
+            ViewData["category"] = name;
+            var entities = this._moviesCategoriesService
                 .GetMoviesByCategory(name);
-            
+            int currentIndex = 1;
+            int pageSize = 6;
+            string controllerName = "Movies";
+            string actionName = "Movies";
+
+            var viewModel = new RenderViewModel(currentIndex,
+                pageSize,
+                controllerName,
+                actionName,
+                entities);
+
             return this.View(viewModel);
         }
     }

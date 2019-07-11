@@ -1,11 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MoviesApp.ViewModels;
+using MoviesApp.ViewModels.Movies;
 
 namespace MoviesApp.Web.Views.Shared.Components.AbstractRender
 {
-    public class AbstractRenderViewComponent
+    using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
+    using ViewModels.Render;
+
+    public class AbstractRenderViewComponent:ViewComponent
     {
+        public IViewComponentResult Invoke(RenderViewModel model)
+        {
+            int currentPage = model.CurrentPage;
+            int pageSize = model.PageSize;
+            var entities = model.Entities;
+
+            var movies = entities.Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+            int totalItems = entities.Count();
+
+            var viewModel = new AbstractRenderViewModel(movies,
+                model, totalItems);
+            return this.View("Default", viewModel);
+        }
     }
 }

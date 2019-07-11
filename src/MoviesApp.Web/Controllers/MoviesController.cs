@@ -54,11 +54,16 @@
         public IActionResult Movies(int currentIndex = 1)
         {
             int pageSize = 6;
+            string controllerName = "Movies";
+            string actionName = "Movies";
+            var entities = this._moviesService.AllMovies();
+
             var viewModel = new RenderViewModel(
                 currentIndex, 
                 pageSize,
-                "Movies",
-                "Movies");
+                controllerName,
+                actionName,
+                entities);
 
             return this.View(viewModel);
         }

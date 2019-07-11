@@ -1,13 +1,11 @@
-﻿using System.Linq;
-using MoviesApp.Data.Models.Movies;
-using MoviesApp.ViewModels.Home;
-
-namespace MoviesApp.Services.DataServices.Contracts
+﻿namespace MoviesApp.Services.DataServices.Contracts
 {
     using System;
     using System.Collections.Generic;
     using ViewModels.Movies;
     using System.Threading.Tasks;
+    using ViewModels.Home;
+    using MoviesApp.ViewModels.Contracts;
 
     public interface IMoviesService
     {
@@ -15,7 +13,7 @@ namespace MoviesApp.Services.DataServices.Contracts
 
         DetailsMovieViewModel GetById(Guid id);
 
-        IEnumerable<DisplayMovieViewModel> AllMovies();
+        IEnumerable<IDisplayable> AllMovies();
  
         IndexViewModel IndexMovies();
     }

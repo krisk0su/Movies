@@ -56,10 +56,12 @@
         public IActionResult Series(int currentIndex = 1)
         {
             int pageSize = 3;
+            var entities = this._seriesService.Series();
             var viewModel = new RenderViewModel(currentIndex,
                 pageSize,
                 "Series",
-                "Series");
+                "Series",
+                entities);
 
             return this.View(viewModel);
         }

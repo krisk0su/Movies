@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Services.DataServices
+﻿using MoviesApp.ViewModels.Contracts;
+
+namespace MoviesApp.Services.DataServices
 {
     using System;
     using System.Threading.Tasks;
@@ -46,7 +48,7 @@
             return series;
         }
 
-        public IEnumerable<DisplaySerieViewModel> Series()
+        public IEnumerable<IDisplayable> Series()
         {
             var series = this._dbRepository
                 .All()
