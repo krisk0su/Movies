@@ -1,0 +1,31 @@
+﻿@model DisplayCategoriesViewModel
+
+<a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Categories</a>
+<ul class="dropdown-menu multi-column columns-2">
+    <div class="row">
+        <div class="col-sm-6">
+            <ul class="multi-column-dropdown">
+                @foreach (var category in Model.FirstColumn)
+                {
+                    <li>
+                        <a asp-controller="Categories"
+                           asp-action="MoviesByCategory"
+                           asp-route-name="@category.Name">@category.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <ul class="multi-column-dropdown">
+                @foreach (var category in Model.SecondColumn)
+                {
+                    <li>
+                        <a asp-controller="Categories"
+                           asp-action="MoviesByCategory"
+                           asp-route-name="@category.Name">@category.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</ul>

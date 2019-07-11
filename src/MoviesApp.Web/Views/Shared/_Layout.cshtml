@@ -36,7 +36,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="dropdown">
                             <!-- Categories -->
-                            <partial name="_AllCategories" />
+                            @await Component.InvokeAsync("CategoriesRender");
                         </li>
                         <li>
                             <a class="navbar-brand p-2" asp-controller="Series" asp-Action="Series">Series</a>
