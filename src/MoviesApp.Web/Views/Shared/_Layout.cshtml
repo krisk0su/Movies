@@ -20,6 +20,7 @@
 </head>
 <body class="site">
     <header>
+        <partial name="_AdminNavigation" />
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container-fluid">
                 <a asp-controller="Movies" asp-action="Movies" class="navbar-brand">MovieCenter</a>
@@ -46,12 +47,11 @@
                         <input name="name" class="form-control" type="text" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                    <partial name="_LoginPartial"/>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
-        <partial name="_AdminNavigation" />
-        
+
     </header>
     <partial name="_CookieConsentPartial" />
     <main role="main" class="Site-content pb-2 pt-2">

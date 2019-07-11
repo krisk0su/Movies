@@ -21,6 +21,7 @@
             int pageSize = model.PageSize;
 
             var entities = this._moviesService.AllMovies();
+
             var movies = entities.Skip((currentPage - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
