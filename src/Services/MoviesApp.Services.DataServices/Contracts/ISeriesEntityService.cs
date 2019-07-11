@@ -13,5 +13,7 @@
         SeasonTableViewModel GetTable(Guid id);
 
         SeasonEntitiesViewModel GetSeasonEntities(CreateSeasonViewModel model);
+
+        DisplayEpisodeViewModel Episode(int id);
     }
 }

@@ -9,21 +9,21 @@
             </tr>
         </thead>
         <tbody>
-        @foreach (var entity in Model.Entities)
-        {
-            <tr>
-                <th scope="row">@entity.Season</th>
-                <td>
-                   @entity.Episode
-                </td>
-                <td>
-                    <a asp-controller="SeriesEntity"
-                       asp-action="Episode"
-                       asp-route-id="@entity.Id"
-                       style="color: aliceblue">Watch Episode @entity.Episode</a>
-                </td>
-            </tr>
-        }
+            @foreach (var entity in Model.Entities)
+            {
+                <tr>
+                    <th scope="row">@entity.Season</th>
+                    <td>
+                        @entity.Episode
+                    </td>
+                    <td>
+                        <a asp-controller="SeriesEntity"
+                           asp-action="Episode"
+                           asp-route-id="@entity.Id"
+                           style="color: aliceblue">Watch Episode @entity.Episode</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

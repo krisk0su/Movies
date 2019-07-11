@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MoviesApp.Services.DataServices
+﻿namespace MoviesApp.Services.DataServices
 {
     using System.Threading.Tasks;
     using Contracts;
@@ -9,7 +7,7 @@ namespace MoviesApp.Services.DataServices
     using Data.Models.Series;
     using System.Linq;
     using System;
-
+    using System.Collections.Generic;
 
     public class SeriesEntityService:ISeriesEntityService
     {
@@ -73,7 +71,8 @@ namespace MoviesApp.Services.DataServices
         public SeasonEntitiesViewModel GetSeasonEntities(CreateSeasonViewModel model)
         {
             var entities = this._repository.All()
-                .Where(x => x.SeriesId == model.SeriesId && x.Season == model.Season)
+                .Where(x => x.SeriesId == model.SeriesId 
+                            && x.Season == model.Season)
                 .OrderBy(x => x.Season)
                 .ToList();
 
@@ -88,8 +87,25 @@ namespace MoviesApp.Services.DataServices
                 tempCollection.Add(temp);
             }
 
-            var viewModel = new SeasonEntitiesViewModel();
+            var viewModel = new SeasonEntitiesViewModel(tempCollection);
 
+            return viewModel;
+        }
+
+        public DisplayEpisodeViewModel Episode(int id)
+        {
+            var episode = this._repository
+                .All()
+                .Single(x => x.Id == id);
+
+            var viewModel = new DisplayEpisodeViewModel(episode.Id,
+                episode.Name,
+                episode.Trailer,
+                episode.Poster,
+                episode.Link1,
+                episode.Link2);
+
+            return viewModel;
         }
     }
 }

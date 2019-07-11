@@ -4,7 +4,14 @@
 body {
     font-family: "Raleway", sans-serif;
 }
-
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.Site-content {
+    flex: 1;
+}
 .card {
     margin-bottom: 1.5rem;
 }

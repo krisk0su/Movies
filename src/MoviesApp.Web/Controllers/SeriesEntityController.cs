@@ -45,8 +45,8 @@
 
         public IActionResult Episode(int id)
         {
-            var viewModel = new DisplayEpisodeViewModel();
-            return null;
+            var viewModel =  this._seriesEntityService.Episode(id);
+            return this.View(viewModel);
         }
     }
 }

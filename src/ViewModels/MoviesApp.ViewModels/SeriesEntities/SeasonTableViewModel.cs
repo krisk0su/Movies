@@ -4,9 +4,9 @@
     using System.Collections.Generic;
 
 
-    public class DisplaySeasonViewModel
+    public class SeasonTableViewModel
     {
-        public DisplaySeasonViewModel(Guid seriesId, IEnumerable<int> seasons)
+        public SeasonTableViewModel(Guid seriesId, IEnumerable<int> seasons)
         {
             this.SeriesId = seriesId;
             this.Seasons = seasons;
