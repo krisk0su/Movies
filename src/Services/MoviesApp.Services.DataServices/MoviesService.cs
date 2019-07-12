@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MoviesApp.ViewModels.Contracts;
-
-namespace MoviesApp.Services.DataServices
+﻿namespace MoviesApp.Services.DataServices
 {
     using System;
     using System.Linq;
@@ -13,6 +10,8 @@ namespace MoviesApp.Services.DataServices
     using Mapping;
     using ViewModels.Home;
     using ViewModels.Movies;
+    using MoviesApp.ViewModels.Contracts;
+
 
     public class MoviesService: IMoviesService
     {

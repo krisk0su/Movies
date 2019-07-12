@@ -1,9 +1,10 @@
 ﻿namespace MoviesApp.Services.DataServices.Contracts
 {
-    using MoviesApp.ViewModels.Search;
+    using System.Collections.Generic;
+    using MoviesApp.ViewModels.Contracts;
 
     public interface ISearchService
     {
-        DisplaySearchViewModel Search(string name);
+        IEnumerable<IDisplayable> Search(string name);
     }
 }

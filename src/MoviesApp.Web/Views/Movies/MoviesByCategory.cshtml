@@ -1,0 +1,25 @@
+﻿@model RenderViewModel
+@{
+    ViewData["Title"] = "All Movies";
+}
+<div class="container-fluid" style="background-color: #393e46; ">
+    <!-- Heading -->
+    <div class="row">
+        <div class="col">
+            <div class="mb-5">
+                <h1 class="text-center text-uppercase font-weight-bold" style="color: #00adb5">
+                    WATCH MOVIES ONLINE
+                </h1>
+                <hr class="hr" />
+            </div>
+        </div>
+    </div>
+    <!-- Cards -->
+    @await Component.InvokeAsync("AbstractRender", 
+        new
+        {
+           model = this.Model
+        });
+</div>
+
+

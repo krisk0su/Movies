@@ -8,6 +8,12 @@
         
         public IViewComponentResult Invoke(PagerViewModel pager) 
         {
+            if (pager.ActionName == "MoviesByCategory" 
+                || pager.ActionName == "Search")
+            {
+                return this.View("MoviesCateogires", pager);
+            }
+
             return this.View("Default",pager);
         }
         

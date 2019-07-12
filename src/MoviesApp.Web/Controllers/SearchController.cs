@@ -2,6 +2,8 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Services.DataServices.Contracts;
+    using ViewModels.Render;
+
 
     public class SearchController : Controller
     {
@@ -12,11 +14,22 @@
             this._searchService = search;
         }
 
-        [HttpPost]
-        public IActionResult Search(string name)
+        public IActionResult Search(string name, int currentIndex = 1)
         {
+            var entities = this._searchService.Search(name);
 
-            var viewModel = this._searchService.Search(name);
+            int pageSize = 6;
+            string controllerName = "Search";
+            string actionName = "Search";
+
+            var viewModel = new RenderViewModel(currentIndex,
+                pageSize,
+                controllerName,
+                actionName,
+                entities);
+
+            viewModel.SearchOption = name;
+
             return View(viewModel);
         }
     }

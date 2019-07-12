@@ -3,7 +3,7 @@
     using Contracts;
     using System;
 
-    public class SearchViewModel:ISearchable
+    public class SearchViewModel:IDisplayable
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

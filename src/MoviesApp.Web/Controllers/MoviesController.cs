@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Web.Controllers
+﻿using MoviesApp.ViewModels.Contracts;
+
+namespace MoviesApp.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;
@@ -11,12 +13,13 @@
     public class MoviesController:Controller
     {
         private readonly IMoviesService _moviesService;
-        private ICategoryService _categoryService;
 
-        public MoviesController(IMoviesService moviesService, ICategoryService category)
+        private readonly IMoviesCategoriesService _moviesCategoriesService;
+
+        public MoviesController(IMoviesService moviesService, IMoviesCategoriesService mvService)
         {
             this._moviesService = moviesService;
-            this._categoryService = category;
+            this._moviesCategoriesService = mvService;
         }
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
@@ -64,6 +67,29 @@
                 controllerName,
                 actionName,
                 entities);
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult MoviesByCategory(string name, int currentIndex = 1)
+        {
+            ViewData["category"] = name;
+
+            var entities = this._moviesCategoriesService
+                .GetMoviesByCategory(name);
+
+      
+            int pageSize = 6;
+            string controllerName = "Movies";
+            string actionName = "MoviesByCategory";
+
+            var viewModel = new RenderViewModel(currentIndex,
+                pageSize,
+                controllerName,
+                actionName,
+                entities);
+
+            viewModel.SearchOption = name;
 
             return this.View(viewModel);
         }

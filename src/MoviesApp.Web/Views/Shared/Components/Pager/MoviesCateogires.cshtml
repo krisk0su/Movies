@@ -7,11 +7,13 @@
             {
                 <li class="page-item">
                     <a class="page-link" asp-controller="@Model.ControllerName"
+                       asp-route-name ="@Model.SearchOption"
                        asp-action="@Model.ActionName">First</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" asp-controller="@Model.ControllerName"
                        asp-action="@Model.ActionName"
+                       asp-route-name ="@Model.SearchOption"
                        asp-route-currentIndex="@(Model.CurrentPage-1)">Previous</a>
                 </li>
             }
@@ -22,6 +24,7 @@
 
                     <a class="page-link" asp-controller="@Model.ControllerName"
                        asp-action="@Model.ActionName"
+                       asp-route-name ="@Model.SearchOption"
                        asp-route-currentIndex="@curPage">@curPage</a>
                 </li>
             }
@@ -31,11 +34,13 @@
                 <li class="page-item">
                     <a class="page-link" asp-controller="@Model.ControllerName"
                        asp-action="@Model.ActionName"
+                       asp-route-name ="@Model.SearchOption"
                        asp-route-currentIndex="@(Model.CurrentPage + 1)">Next</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" asp-controller="@Model.ControllerName"
                        asp-action="@Model.ActionName"
+                       asp-route-name ="@Model.SearchOption"
                        asp-route-currentIndex="@Model.TotalPages">Last</a>
                 </li>
             }

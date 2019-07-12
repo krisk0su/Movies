@@ -1,11 +1,13 @@
-﻿namespace MoviesApp.Web.Views.Shared.Components.AbstractRender
-{
-    using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
-    using ViewModels.Render;
-    using ViewModels;
+﻿using System.Linq;
+using MoviesApp.ViewModels;
+using MoviesApp.ViewModels.Render;
 
-    public class AbstractRenderViewComponent:ViewComponent
+namespace MoviesApp.Web.Views.Shared.Components.SearchRender
+{
+
+    using Microsoft.AspNetCore.Mvc;
+
+    public class SearchRenderViewComponent:ViewComponent
     {
         public IViewComponentResult Invoke(RenderViewModel model)
         {

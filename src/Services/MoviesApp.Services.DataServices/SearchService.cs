@@ -20,7 +20,7 @@
             this._moviesRepo = moviesRepo;
             this._seriesRepo = seriesRepo;
         }
-        public DisplaySearchViewModel Search(string name)
+        public IEnumerable<IDisplayable> Search(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -30,25 +30,25 @@
             var movies = this.MoviesSearch(name);
             var series = this.SeriesSearch(name);
 
-            var viewModel = new DisplaySearchViewModel();
+            var model = new List<IDisplayable>();
 
-            viewModel.Results.AddRange(movies);
-            viewModel.Results.AddRange(series);
+            model.AddRange(movies);
+            model.AddRange(series);
 
-            if (viewModel.Results.Count == 0)
+            if (model.Count == 0)
             {
                return null;
             }
-            return viewModel;
+            return model;
         }
 
-        private IEnumerable<ISearchable> MoviesSearch(string name)
+        private IEnumerable<IDisplayable> MoviesSearch(string name)
         {
             var results = this._moviesRepo.All()
                 .Where(x => x.Name == name || x.Name.Contains(name))
                 .ToList();
 
-            var searches = new List<ISearchable>();
+            var searches = new List<IDisplayable>();
 
             foreach (var result in results)
             {
@@ -66,13 +66,13 @@
 
             return searches;
         }
-        private IEnumerable<ISearchable> SeriesSearch(string name)
+        private IEnumerable<IDisplayable> SeriesSearch(string name)
         {
             var results = this._seriesRepo.All()
                 .Where(x => x.Name == name || x.Name.Contains(name))
                 .ToList();
 
-            var searches = new List<ISearchable>();
+            var searches = new List<IDisplayable>();
 
             foreach (var result in results)
             {

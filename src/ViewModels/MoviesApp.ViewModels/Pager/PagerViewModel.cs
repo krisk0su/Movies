@@ -34,6 +34,7 @@
             EndPage = endPage;
             this.ControllerName = model.ControllerName;
             this.ActionName = model.ActionName;
+            this.SearchOption = model.SearchOption;
         }
         public int TotalItems { get; private set; }
         public int CurrentPage { get; private set; }
@@ -43,5 +44,6 @@
         public int EndPage { get; private set; }
         public string ControllerName { get; set; }
         public string ActionName { get; set; }
+        public string SearchOption { get; set; }
     }
 }

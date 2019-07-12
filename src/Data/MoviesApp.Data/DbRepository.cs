@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using MoviesApp.Data.Contracts;
-
-namespace MoviesApp.Data
+﻿namespace MoviesApp.Data
 {
+   
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using Contracts;
+
+
     public class DbRepository<TEntity> : IRepository<TEntity> 
         where TEntity : class
     {

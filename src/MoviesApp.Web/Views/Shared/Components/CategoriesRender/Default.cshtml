@@ -8,7 +8,7 @@
                 @foreach (var category in Model.FirstColumn)
                 {
                     <li>
-                        <a asp-controller="Categories"
+                        <a asp-controller="Movies"
                            asp-action="MoviesByCategory"
                            asp-route-name="@category.Name">@category.Name</a>
                     </li>
@@ -20,7 +20,7 @@
                 @foreach (var category in Model.SecondColumn)
                 {
                     <li>
-                        <a asp-controller="Categories"
+                        <a asp-controller="Movies"
                            asp-action="MoviesByCategory"
                            asp-route-name="@category.Name">@category.Name</a>
                     </li>

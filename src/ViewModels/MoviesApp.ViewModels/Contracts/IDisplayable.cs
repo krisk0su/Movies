@@ -11,5 +11,7 @@
         string Poster { get; set; }
 
         double Rating { get; set; }
+
+        string Type { get; set; }
     }
 }

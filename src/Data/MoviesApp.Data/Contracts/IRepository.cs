@@ -1,6 +1,4 @@
-﻿using MoviesApp.Data.Models.Movies;
-
-namespace MoviesApp.Data.Contracts
+﻿namespace MoviesApp.Data.Contracts
 {
     using System.Linq;
     using System.Threading.Tasks;

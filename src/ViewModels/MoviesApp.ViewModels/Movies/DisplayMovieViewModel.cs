@@ -16,7 +16,9 @@
 
         public double Rating { get; set; }
 
-        
+        public string Type { get; set; }
+
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<DisplayMovieViewModel, Movie>()
