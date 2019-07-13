@@ -17,7 +17,6 @@
                        asp-route-currentIndex="@(Model.CurrentPage-1)">Previous</a>
                 </li>
             }
-
             @for (var curPage = Model.StartPage; curPage <= Model.EndPage; curPage++)
             {
                 <li class="page-item @(curPage == Model.CurrentPage ? "active" : "")">

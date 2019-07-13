@@ -1,4 +1,7 @@
-﻿namespace MoviesApp.Web
+﻿using MoviesApp.Web.Helpers;
+using MoviesApp.Web.Helpers.Contracts;
+
+namespace MoviesApp.Web
 {
     using System;
     using Data.Contracts;
@@ -75,6 +78,7 @@
             services.AddScoped<ISeriesService, SeriesService>();
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<ISeriesEntityService, SeriesEntityService>();
+            services.AddScoped<IPagerService, PagerService>();
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
         }
 

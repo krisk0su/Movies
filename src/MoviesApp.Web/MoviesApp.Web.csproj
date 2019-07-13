@@ -22,9 +22,4 @@
     <ProjectReference Include="..\ViewModels\MoviesApp.ViewModels\MoviesApp.ViewModels.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-
 </Project>

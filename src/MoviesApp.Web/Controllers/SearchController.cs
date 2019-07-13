@@ -3,7 +3,10 @@
     using Microsoft.AspNetCore.Mvc;
     using Services.DataServices.Contracts;
     using ViewModels.Render;
-
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using ViewModels.Contracts;
 
     public class SearchController : Controller
     {
@@ -16,7 +19,17 @@
 
         public IActionResult Search(string name, int currentIndex = 1)
         {
-            var entities = this._searchService.Search(name);
+            var entities = new List<IDisplayable>();
+
+            try
+            {
+                entities = this._searchService.Search(name).ToList();
+            }
+            catch (Exception ex)
+            {
+                return this.View("NotFound", ex.Message);
+            }
+           
 
             int pageSize = 6;
             string controllerName = "Search";

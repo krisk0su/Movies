@@ -1,16 +1,12 @@
-﻿using System.Linq;
-
-namespace MoviesApp.Services.DataServices
+﻿namespace MoviesApp.Services.DataServices
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Contracts;
-    using Data;
     using Data.Models;
     using MoviesApp.Data.Contracts;
-
-
+    using System.Linq;
 
     public class MoviesActorsService:IMoviesActorsService
     {

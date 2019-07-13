@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Services.DataServices
+﻿using System;
+
+namespace MoviesApp.Services.DataServices
 {
     using Contracts;
     using ViewModels.Search;
@@ -20,11 +22,12 @@
             this._moviesRepo = moviesRepo;
             this._seriesRepo = seriesRepo;
         }
+
         public IEnumerable<IDisplayable> Search(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return null;
+               throw new Exception("Movie not found.");
             }
 
             var movies = this.MoviesSearch(name);
@@ -37,7 +40,7 @@
 
             if (model.Count == 0)
             {
-               return null;
+                throw new Exception("Movie not found.");
             }
             return model;
         }
