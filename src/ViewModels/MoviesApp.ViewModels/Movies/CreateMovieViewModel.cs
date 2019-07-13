@@ -3,26 +3,24 @@
    
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Common;
 
-    public class CreateMovieViewModel 
+    public class CreateMovieViewModel:IBaseEntity
     {
-       
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Description { get; set; }
-        [Required]
-        public string ReleaseDate { get; set; }
-        [Required]
-        public string Link { get; set; }
-        [Required]
         public string Poster { get; set; }
-        [Required]
+        public double Rating { get; set; }
         public string Trailer { get; set; }
+        public string Link1 { get; set; }
+        public string Link2 { get; set; }
+
+        public string ReleaseDate { get; set; }
+      
 
         public DateTime CreatedOn { get; set; }
-        [Required]
-        public double Rating { get; set; }
+
+     
         [Required]
         public string Genre { get; set; }
         [Required]
@@ -33,5 +31,7 @@
 
         //public IEnumerable<SelectListItem> SelectList { get; set; }
 
+
+        
     }
 }

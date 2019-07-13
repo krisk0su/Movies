@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using MoviesApp.ViewModels;
-using MoviesApp.ViewModels.Render;
-
-namespace MoviesApp.Web.Views.Shared.Components.SearchRender
+﻿namespace MoviesApp.Web.Views.Shared.Components.SearchRender
 {
 
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
+    using ViewModels;
+    using ViewModels.Render;
+
 
     public class SearchRenderViewComponent:ViewComponent
     {

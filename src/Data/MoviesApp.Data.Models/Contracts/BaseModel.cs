@@ -5,5 +5,4 @@
         public T Id { get; set; }
 
     }
-    
 }

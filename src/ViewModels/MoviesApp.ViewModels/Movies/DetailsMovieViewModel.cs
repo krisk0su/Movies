@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.ViewModels.Movies
+﻿using MoviesApp.Common;
+
+namespace MoviesApp.ViewModels.Movies
 {
     using AutoMapper;
     using MoviesApp.Data.Models.Movies;
@@ -9,7 +11,7 @@
     using Contracts;
     using System.Linq;
 
-    public class DetailsMovieViewModel:IMovie, IMapFrom<Movie>, IHaveCustomMapping
+    public class DetailsMovieViewModel:IBaseEntity, IMapFrom<Movie>, IHaveCustomMapping
     {
         public DetailsMovieViewModel()
         {
@@ -20,10 +22,10 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Poster { get; set; }
-        public string ReleaseDate { get; set; }
         public double Rating { get; set; }
+        public string Link1 { get; set; }
+        public string Link2 { get; set; }
 
-        public string Link { get; set; }
         public string Trailer { get; set; }
         public DateTime CreatedOn { get; set; }
         public IEnumerable<Category> Categories { get; set; }
@@ -71,5 +73,7 @@
 
         }
         #endregion
+
+     
     }
 }
