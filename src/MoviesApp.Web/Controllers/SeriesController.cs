@@ -2,20 +2,22 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using ViewModels.Series;
-    using ViewModels.Render;
     using ViewModels.SeriesEntities;
     using Services.DataServices.Contracts;
     using System.Threading.Tasks;
     using System;
-
+    using Helpers.Contracts;
 
     public class SeriesController : Controller
     {
         private readonly ISeriesService _seriesService;
+        private readonly IRenderService _renderService;
 
-        public SeriesController(ISeriesService service)
+        public SeriesController(ISeriesService service,
+            IRenderService renderService)
         {
             this._seriesService = service;
+            this._renderService = renderService;
         }
 
         public IActionResult Create()
@@ -55,12 +57,11 @@
 
         public IActionResult Series(int currentIndex = 1)
         {
-            int pageSize = 3;
+            
             var entities = this._seriesService.Series();
-            var viewModel = new RenderViewModel(currentIndex,
-                pageSize,
-                "Series",
-                "Series",
+            var viewModel = this._renderService.GetViewModel(currentIndex,
+                null,
+                ControllerContext,
                 entities);
 
             return this.View(viewModel);

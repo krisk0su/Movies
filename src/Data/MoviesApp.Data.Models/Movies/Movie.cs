@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using Common;
 
-    public class Movie : BaseModel<Guid>, IBaseEntity
+    public class Movie : BaseModel<Guid>, IMovie
     {
         public Movie()
         {
@@ -22,6 +22,7 @@
         public string Trailer { get; set; }
         public string Link1 { get; set; }
         public string Link2 { get; set; }
+        public string ReleaseDate { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -29,6 +30,7 @@
 
         public virtual HashSet<MoviesCategories> MoviesCategories { get; set; }
 
-        
+
+     
     }
 }

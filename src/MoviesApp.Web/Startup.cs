@@ -1,7 +1,4 @@
-﻿using MoviesApp.Web.Helpers;
-using MoviesApp.Web.Helpers.Contracts;
-
-namespace MoviesApp.Web
+﻿namespace MoviesApp.Web
 {
     using System;
     using Data.Contracts;
@@ -25,6 +22,9 @@ namespace MoviesApp.Web
     using Microsoft.Extensions.DependencyInjection;
     using Services.Seeders;
     using Data;
+    using Helpers;
+    using Helpers.Contracts;
+
     //Using=s
     public class Startup
     {
@@ -79,6 +79,7 @@ namespace MoviesApp.Web
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<ISeriesEntityService, SeriesEntityService>();
             services.AddScoped<IPagerService, PagerService>();
+            services.AddScoped<IRenderService, RenderService>();
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
         }
 

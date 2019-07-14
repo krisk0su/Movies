@@ -1,6 +1,4 @@
-﻿using MoviesApp.ViewModels.Render;
-
-namespace MoviesApp.Web.Controllers
+﻿namespace MoviesApp.Web.Controllers
 {
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
@@ -45,24 +43,5 @@ namespace MoviesApp.Web.Controllers
             return this.View(viewModel);
         }
 
-        
-        public IActionResult MoviesByCategory(string name)
-        {
-            ViewData["category"] = name;
-            var entities = this._moviesCategoriesService
-                .GetMoviesByCategory(name);
-            int currentIndex = 1;
-            int pageSize = 6;
-            string controllerName = "Movies";
-            string actionName = "Movies";
-
-            var viewModel = new RenderViewModel(currentIndex,
-                pageSize,
-                controllerName,
-                actionName,
-                entities);
-
-            return this.View(viewModel);
-        }
     }
 }

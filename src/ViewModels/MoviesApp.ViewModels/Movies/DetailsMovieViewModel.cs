@@ -1,6 +1,4 @@
-﻿using MoviesApp.Common;
-
-namespace MoviesApp.ViewModels.Movies
+﻿namespace MoviesApp.ViewModels.Movies
 {
     using AutoMapper;
     using MoviesApp.Data.Models.Movies;
@@ -8,10 +6,10 @@ namespace MoviesApp.ViewModels.Movies
     using System.Collections.Generic;
     using MoviesApp.Data.Models.Categories;
     using System;
-    using Contracts;
+    using Common;
     using System.Linq;
 
-    public class DetailsMovieViewModel:IBaseEntity, IMapFrom<Movie>, IHaveCustomMapping
+    public class DetailsMovieViewModel:IMovie, IMapFrom<Movie>, IHaveCustomMapping
     {
         public DetailsMovieViewModel()
         {
@@ -25,6 +23,7 @@ namespace MoviesApp.ViewModels.Movies
         public double Rating { get; set; }
         public string Link1 { get; set; }
         public string Link2 { get; set; }
+        public string ReleaseDate { get; set; }
 
         public string Trailer { get; set; }
         public DateTime CreatedOn { get; set; }
@@ -58,8 +57,10 @@ namespace MoviesApp.ViewModels.Movies
                     x => x.MapFrom(m => m.Name))
                 .ForMember(x => x.Description,
                     x => x.MapFrom(m => m.Description))
-                .ForMember(x => x.Link,
-                    x => x.MapFrom(m => m.Link))
+                .ForMember(x => x.Link1,
+                    x => x.MapFrom(m => m.Link1))
+                .ForMember(x => x.Link2,
+                    x => x.MapFrom(m => m.Link2))
                 .ForMember(x => x.Poster,
                     x => x.MapFrom(m => m.Poster))
                 .ForMember(x => x.Trailer,
@@ -74,6 +75,7 @@ namespace MoviesApp.ViewModels.Movies
         }
         #endregion
 
-     
+
+        
     }
 }

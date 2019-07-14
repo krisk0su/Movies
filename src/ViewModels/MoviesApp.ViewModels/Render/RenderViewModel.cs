@@ -1,8 +1,7 @@
-﻿using MoviesApp.ViewModels.Contracts;
-
-namespace MoviesApp.ViewModels.Render
+﻿namespace MoviesApp.ViewModels.Render
 {
     using System.Collections.Generic;
+    using Contracts;
 
     public class RenderViewModel
     {
@@ -10,14 +9,15 @@ namespace MoviesApp.ViewModels.Render
             int pageSize,
             string controllerName,
             string actionName,
-            IEnumerable<IDisplayable> entities)
+            IEnumerable<IDisplayable> entities,
+            string searchOption)
         {
             this.CurrentPage = currentPage;
             this.PageSize = pageSize;
             this.ControllerName = controllerName;
             this.ActionName = actionName;
             this.Entities = entities;
-            this.SearchOption = string.Empty;
+            this.SearchOption = searchOption;
         }
 
         public int CurrentPage  { get; set; }

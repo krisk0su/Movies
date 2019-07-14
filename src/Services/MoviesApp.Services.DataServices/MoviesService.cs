@@ -35,7 +35,8 @@
                 Name = model.Name,
                 Description = model.Description,
                 Trailer = model.Trailer,
-                Link = model.Link,
+                Link1 = model.Link1,
+                Link2 = model.Link2,
                 Poster = model.Poster,
                 Rating = model.Rating,
                 ReleaseDate = model.ReleaseDate
@@ -88,7 +89,6 @@
             var latest = this._repository
                 .All()
                 .To<DetailsMovieViewModel>()
-                .OrderBy(x => x.CreatedOn)
                 .ToList();
 
             var vm = new IndexViewModel(){Latest = latest, TopRated = latest};

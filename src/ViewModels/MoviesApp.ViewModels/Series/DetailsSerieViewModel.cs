@@ -6,11 +6,10 @@
     using Data.Models.Series;
     using Services.Mapping;
     using AutoMapper;
-    using Contracts;
+    using Common;
 
 
-
-    public class DetailsSerieViewModel : IMovie, IMapFrom<Series>, IHaveCustomMapping
+    public class DetailsSerieViewModel : ISerie, IMapFrom<Series>, IHaveCustomMapping
     {
         public DetailsSerieViewModel()
         {
@@ -22,8 +21,9 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Poster { get; set; }
-        public string ReleaseDate { get; set; }
         public double Rating { get; set; }
+        public string ReleaseDate { get; set; }
+      
 
         public IEnumerable<string> Actors { get; set; }
 

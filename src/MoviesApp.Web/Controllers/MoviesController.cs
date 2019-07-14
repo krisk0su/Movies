@@ -1,6 +1,4 @@
-﻿using MoviesApp.ViewModels.Contracts;
-
-namespace MoviesApp.Web.Controllers
+﻿namespace MoviesApp.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;
@@ -8,19 +6,25 @@ namespace MoviesApp.Web.Controllers
     using Services.DataServices.Contracts;
     using ViewModels.Movies;
     using Microsoft.AspNetCore.Authorization;
-    using ViewModels.Render;
+    using Helpers.Contracts;
+
 
     public class MoviesController:Controller
     {
         private readonly IMoviesService _moviesService;
 
         private readonly IMoviesCategoriesService _moviesCategoriesService;
+        private readonly IRenderService _renderService;
 
-        public MoviesController(IMoviesService moviesService, IMoviesCategoriesService mvService)
+        public MoviesController(IMoviesService moviesService, 
+            IMoviesCategoriesService mvService,
+            IRenderService renderService)
         {
             this._moviesService = moviesService;
             this._moviesCategoriesService = mvService;
+            this._renderService = renderService;
         }
+
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -56,40 +60,29 @@ namespace MoviesApp.Web.Controllers
 
         public IActionResult Movies(int currentIndex = 1)
         {
-            int pageSize = 6;
-            string controllerName = "Movies";
-            string actionName = "Movies";
             var entities = this._moviesService.AllMovies();
 
-            var viewModel = new RenderViewModel(
-                currentIndex, 
-                pageSize,
-                controllerName,
-                actionName,
+            var viewModel = this._renderService.GetViewModel(currentIndex, 
+                null, 
+                ControllerContext, 
                 entities);
+
 
             return this.View(viewModel);
         }
 
-        public IActionResult MoviesByCategory(string name, int currentIndex = 1)
+        public IActionResult MoviesByCategory(string name , int currentIndex = 1 )
         {
             ViewData["category"] = name;
 
             var entities = this._moviesCategoriesService
                 .GetMoviesByCategory(name);
 
-      
-            int pageSize = 6;
-            string controllerName = "Movies";
-            string actionName = "MoviesByCategory";
-
-            var viewModel = new RenderViewModel(currentIndex,
-                pageSize,
-                controllerName,
-                actionName,
+            var viewModel = this._renderService.GetViewModel(currentIndex, 
+                name, 
+                ControllerContext, 
                 entities);
 
-            viewModel.SearchOption = name;
 
             return this.View(viewModel);
         }

@@ -4,11 +4,11 @@
     using Microsoft.EntityFrameworkCore;
     using Models;
     using Models.Actors;
+    using Models.Animes;
     using Models.Categories;
     using Models.Movies;
     using Models.Series;
-
-
+    
     public class MoviesAppContext : IdentityDbContext<MoviesAppUser>
     {
         public DbSet<Movie> Movies { get; set; }
@@ -24,6 +24,10 @@
         public DbSet<Series> Series { get; set; }
 
         public DbSet<SeriesEntity> SeriesEntity { get; set; }
+
+        public DbSet<Anime> Animes { get; set; }
+
+        public DbSet<AnimeEntity> AnimeEntities { get; set; }
 
         public MoviesAppContext(DbContextOptions<MoviesAppContext> options)
             : base(options)
@@ -45,6 +49,7 @@
                 .HasOne(x => x.Movie)
                 .WithMany(x => x.MoviesCategories)
                 .HasForeignKey(x => x.MovieId);
+
             builder.Entity<MoviesCategories>()
                 .HasOne(x => x.Category)
                 .WithMany(x => x.MoviesCategories)

@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using Common;
 
-    public class CreateMovieViewModel:IBaseEntity
+    public class CreateMovieViewModel:IMovie
     {
         public string Name { get; set; }
         public string Description { get; set; }
