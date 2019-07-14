@@ -1,11 +1,10 @@
-﻿using System.Linq;
-
-namespace MoviesApp.Web.Helpers.Contracts
+﻿namespace MoviesApp.Web.Helpers.Contracts
 {
     using ViewModels.Render;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
     using MoviesApp.ViewModels.Contracts;
+    using System.Linq;
 
     public class RenderService : IRenderService
     {
@@ -21,6 +20,7 @@ namespace MoviesApp.Web.Helpers.Contracts
 
             var controllerName = controllerContext.ActionDescriptor.ControllerName
                 .Split("Controller").First();
+
             var actionName = controllerContext.ActionDescriptor.ActionName;
 
             return new RenderViewModel(
