@@ -1,10 +1,12 @@
-﻿namespace MoviesApp.Web.Helpers.Contracts
+﻿namespace MoviesApp.Web.Helpers
 {
-    using ViewModels.Render;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.AspNetCore.Mvc;
     using MoviesApp.ViewModels.Contracts;
-    using System.Linq;
+    using ViewModels.Render;
+    using Contracts;
+
 
     public class RenderService : IRenderService
     {
