@@ -1,42 +1,51 @@
-﻿using System;
-
-namespace MoviesApp.Services.DataServices
+﻿namespace MoviesApp.Services.DataServices
 {
     using Contracts;
-    using ViewModels.Search;
     using MoviesApp.Data.Contracts;
     using Data.Models.Movies;
     using Data.Models.Series;
     using System.Collections.Generic;
     using MoviesApp.ViewModels.Contracts;
     using System.Linq;
+    using System;
+    using Data.Models.Animes;
+    using Mapping;
+    using ViewModels.Movies;
+    using ViewModels.Series;
+    using ViewModels.Animes;
 
-    public class SearchService:ISearchService
+
+    public class SearchService : ISearchService
     {
         private readonly IRepository<Movie> _moviesRepo;
         private readonly IRepository<Series> _seriesRepo;
+        private readonly IRepository<Anime> _animesRepo;
 
         public SearchService(IRepository<Movie> moviesRepo,
-            IRepository<Series> seriesRepo)
+            IRepository<Series> seriesRepo,
+            IRepository<Anime> animesRepo)
         {
             this._moviesRepo = moviesRepo;
             this._seriesRepo = seriesRepo;
+            this._animesRepo = animesRepo;
         }
 
         public IEnumerable<IDisplayable> Search(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-               throw new Exception("Movie not found.");
+                throw new Exception("Movie not found.");
             }
 
-            var movies = this.MoviesSearch(name);
-            var series = this.SeriesSearch(name);
+            var movies = this.GetMovies(name);
+            var series = this.GetSeries(name);
+            var animes = this.GetAnimes(name);
 
             var model = new List<IDisplayable>();
 
             model.AddRange(movies);
             model.AddRange(series);
+            model.AddRange(animes);
 
             if (model.Count == 0)
             {
@@ -45,53 +54,28 @@ namespace MoviesApp.Services.DataServices
             return model;
         }
 
-        private IEnumerable<IDisplayable> MoviesSearch(string name)
+        private IEnumerable<IDisplayable> GetMovies(string name)
         {
-            var results = this._moviesRepo.All()
+            return this._moviesRepo.All()
                 .Where(x => x.Name == name || x.Name.Contains(name))
+                .To<DisplayMovieViewModel>()
                 .ToList();
 
-            var searches = new List<IDisplayable>();
-
-            foreach (var result in results)
-            {
-                var search = new SearchViewModel()
-                {
-                    Id = result.Id,
-                    Name = result.Name,
-                    Poster = result.Poster,
-                    Rating = result.Rating,
-                    Type = "Movies"
-                };
-
-                searches.Add(search);
-            }
-
-            return searches;
         }
-        private IEnumerable<IDisplayable> SeriesSearch(string name)
+        private IEnumerable<IDisplayable> GetSeries(string name)
         {
-            var results = this._seriesRepo.All()
+            return this._seriesRepo.All()
                 .Where(x => x.Name == name || x.Name.Contains(name))
+                .To<DisplaySerieViewModel>()
                 .ToList();
+        }
 
-            var searches = new List<IDisplayable>();
-
-            foreach (var result in results)
-            {
-                var search = new SearchViewModel()
-                {
-                    Id = result.Id,
-                    Name = result.Name,
-                    Poster = result.Poster,
-                    Rating = result.Rating,
-                    Type = "Series"
-                };
-
-                searches.Add(search);
-            }
-
-            return searches;
+        private IEnumerable<IDisplayable> GetAnimes(string name)
+        {
+            return this._animesRepo.All()
+                .Where(x => x.Name == name || x.Name.Contains(name))
+                .To<DisplayAnimeViewModel>()
+                .ToList();
         }
     }
 }

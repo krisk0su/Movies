@@ -8,6 +8,10 @@
 
     public class DisplaySerieViewModel:IDisplayable, IMapFrom<Series>, IHaveCustomMapping
     {
+        public DisplaySerieViewModel()
+        {
+            this.Type = "Series";
+        }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Poster { get; set; }

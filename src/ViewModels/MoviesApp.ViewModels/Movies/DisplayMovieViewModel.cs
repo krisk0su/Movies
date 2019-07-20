@@ -8,6 +8,10 @@
 
     public class DisplayMovieViewModel:IDisplayable,IMapFrom<Movie>, IHaveCustomMapping
     {
+        public DisplayMovieViewModel()
+        {
+            this.Type = "Movies";
+        }
         public Guid Id { get; set; }
 
         public string Name { get; set; }
