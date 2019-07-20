@@ -11,7 +11,7 @@
     public class RenderService : IRenderService
     {
 
-        public const int PageSize = 6;
+        public const int PageSize = 18;
 
         public RenderViewModel GetViewModel(int currentIndex,
             string optionResult,

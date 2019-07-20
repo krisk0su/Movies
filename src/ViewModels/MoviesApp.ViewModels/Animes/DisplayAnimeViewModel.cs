@@ -8,6 +8,10 @@
 
     public class DisplayAnimeViewModel:IDisplayable, IMapFrom<Anime>, IHaveCustomMapping
     {
+        public DisplayAnimeViewModel()
+        {
+            this.Type = "Animes";
+        }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Poster { get; set; }
