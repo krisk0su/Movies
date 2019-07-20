@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Data.Models.Movies
+﻿using MoviesApp.Common.Movies;
+
+namespace MoviesApp.Data.Models.Movies
 {
     using System;
     using Contracts;

@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.ViewModels.Movies
+﻿using MoviesApp.Common.Movies;
+
+namespace MoviesApp.ViewModels.Movies
 {
     using AutoMapper;
     using MoviesApp.Data.Models.Movies;

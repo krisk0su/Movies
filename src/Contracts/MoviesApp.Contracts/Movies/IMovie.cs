@@ -1,4 +1,4 @@
-﻿namespace MoviesApp.Common
+﻿namespace MoviesApp.Common.Movies
 {
     public interface IMovie:INameable, 
         IDescription, IPoster, 

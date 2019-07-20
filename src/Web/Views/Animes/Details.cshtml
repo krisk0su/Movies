@@ -1,6 +1,6 @@
-﻿@model DetailsSerieViewModel
+﻿@model DetailsAnimeViewModel
 @{
-    ViewData["Title"] = "Serie Details";
+    ViewData["Title"] = "Anime Details";
 }
 @inject SignInManager<MoviesAppUser> SignInManager
 <section class="py-5 bg-white">
@@ -43,16 +43,6 @@
 
                             }
                         </div>
-                        <!-- Genre -->
-                        <p class="mb-2">
-                            <span class="font-weight-bold">Genre: </span>
-                            <span id="movie-genre">@Model.DisplayCategories()</span>
-                        </p>
-                        <!-- actors -->
-                        <p class="mb-2">
-                            <span class="font-weight-bold">Actors: </span>
-                            <span id="movie-actors">@Model.GetActors()</span>
-                        </p>
                         <!-- Release date -->
                         <p class="mb-2">
                             <span class="font-weight-bold">Release date: </span>
@@ -66,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            @await Component.InvokeAsync("SeriesTable", new {id = this.Model.Id})
+            @await Component.InvokeAsync("AnimesTable", new {id = this.Model.Id})
         </div>
     </div>
 </section>

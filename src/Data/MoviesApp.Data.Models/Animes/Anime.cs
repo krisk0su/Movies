@@ -2,8 +2,9 @@
 {
     using System;
     using Contracts;
-    using Common;
     using System.Collections.Generic;
+    using MoviesApp.Common.Animes;
+
 
     public class Anime:BaseModel<Guid>,
         IAnime
@@ -18,7 +19,9 @@
         public string Description { get; set; }
         public string Poster { get; set; }
         public double Rating { get; set; }
+        public string ReleaseDate { get; set; }
 
         public virtual IEnumerable<AnimeEntity> AnimeEntities { get; set; }
+       
     }
 }

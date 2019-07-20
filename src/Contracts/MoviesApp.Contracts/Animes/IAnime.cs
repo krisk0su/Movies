@@ -1,8 +1,8 @@
-﻿namespace MoviesApp.Common
+﻿namespace MoviesApp.Common.Animes
 {
     public interface IAnime: INameable,
         IDescription, IPoster,
-        IRating
+        IRating, IReleaseDate
     {
     }
 }

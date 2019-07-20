@@ -1,6 +1,4 @@
-﻿using MoviesApp.ViewModels.Contracts;
-
-namespace MoviesApp.Services.DataServices
+﻿namespace MoviesApp.Services.DataServices
 {
     using System;
     using System.Threading.Tasks;
@@ -11,6 +9,8 @@ namespace MoviesApp.Services.DataServices
     using System.Collections.Generic;
     using System.Linq;
     using Mapping;
+    using MoviesApp.ViewModels.Contracts;
+
 
     public class SeriesService:ISeriesService
     {

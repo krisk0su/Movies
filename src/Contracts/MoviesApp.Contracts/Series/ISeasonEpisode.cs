@@ -1,4 +1,4 @@
-﻿namespace MoviesApp.Common
+﻿namespace MoviesApp.Common.Series
 {
     public interface ISeasonEpisode
     {

@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.ViewModels.Series
+﻿using MoviesApp.Common.Series;
+
+namespace MoviesApp.ViewModels.Series
 {
     using System;
     using System.Collections.Generic;
