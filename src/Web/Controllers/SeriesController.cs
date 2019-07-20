@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using ViewModels.Series;
-    using ViewModels.SeriesEntities;
     using Services.DataServices.Contracts;
     using System.Threading.Tasks;
     using System;
@@ -37,22 +36,6 @@
         {
             var viewModel = this._seriesService.GetSeries(id);
             return this.View(viewModel);
-        }
-
-        public IActionResult CreateEntity(Guid id)
-        {
-            var viewModel = new CreateSeriesEntityViewModel()
-            {
-                SeriesId = id
-            };
-           
-            return this.View(viewModel);
-        }
-        [HttpPost]
-        public IActionResult CreateEntity(CreateSeriesEntityViewModel model)
-        {
-            
-            return this.Ok(model.SeriesId);
         }
 
         public IActionResult Series(int currentIndex = 1)

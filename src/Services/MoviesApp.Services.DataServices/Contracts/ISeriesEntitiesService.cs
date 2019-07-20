@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using System;
 
-    public interface ISeriesEntityService
+    public interface ISeriesEntitiesService
     {
         Task<int> Create(CreateSeriesEntityViewModel model);
 

@@ -7,9 +7,9 @@
 
     public class SeriesTableViewComponent:ViewComponent
     {
-        private readonly ISeriesEntityService _SeriesService;
+        private readonly ISeriesEntitiesService _SeriesService;
 
-        public SeriesTableViewComponent(ISeriesEntityService service)
+        public SeriesTableViewComponent(ISeriesEntitiesService service)
         {
             this._SeriesService = service;
         }

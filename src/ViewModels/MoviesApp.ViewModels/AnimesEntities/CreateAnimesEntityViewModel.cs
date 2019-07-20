@@ -1,12 +1,16 @@
-﻿namespace MoviesApp.Data.Models.Animes
+﻿namespace MoviesApp.ViewModels.AnimesEntities
 {
     using MoviesApp.Common.Animes;
-    using Contracts;
     using System;
-    
-    public class AnimeEntity:BaseModel<int>,
-        IAnimeEntity
+
+    public class CreateAnimesEntityViewModel:IAnimeEntity
     {
+        public CreateAnimesEntityViewModel(Guid animeId, string name, string poster)
+        {
+            this.AnimeId = animeId;
+            this.Name = name;
+            this.Poster = poster;
+        }
         public string Name { get; set; }
         public string Poster { get; set; }
         public string Link1 { get; set; }
@@ -15,6 +19,5 @@
         public int Episode { get; set; }
 
         public Guid AnimeId { get; set; }
-        public virtual Anime Anime { get; set; }
     }
 }

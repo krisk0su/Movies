@@ -6,19 +6,18 @@
     using ViewModels.SeriesEntities;
     using System.Threading.Tasks;
 
-    public class SeriesEntityController : Controller
+    public class SeriesEntitiesController : Controller
     {
-        private readonly ISeriesEntityService _seriesEntityService;
+        private readonly ISeriesEntitiesService _seriesEntityService;
 
-        public SeriesEntityController(ISeriesEntityService service)
+        public SeriesEntitiesController(ISeriesEntitiesService service)
         {
             this._seriesEntityService = service;
         }
 
         public IActionResult Create(Guid seriesId, string name ,string poster)
         {
-            var viewModel = new CreateSeriesEntityViewModel()
-                { SeriesId = seriesId, Poster = poster, Name = name};
+            var viewModel = new CreateSeriesEntityViewModel(seriesId, name, poster);
             return this.View(viewModel);
         }
 
@@ -33,7 +32,6 @@
         public IActionResult Details(int id)
         {
             var viewModel = this._seriesEntityService.GetById(id);
-
             return this.View(viewModel);
         }
 

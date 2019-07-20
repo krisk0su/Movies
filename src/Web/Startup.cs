@@ -72,13 +72,14 @@
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IActorsService, ActorsService>();
             services.AddScoped<IAnimesService, AnimesService>();
+            services.AddScoped<IAnimesEntitiesService, IAnimesEntitiesService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IMoviesService, MoviesService>();
             services.AddScoped<IMoviesActorsService, MoviesActorsService>();
             services.AddScoped<IMoviesCategoriesService, MoviesCategoriesService>();
             services.AddScoped<ISeriesService, SeriesService>();
             services.AddScoped<ISearchService, SearchService>();
-            services.AddScoped<ISeriesEntityService, SeriesEntityService>();
+            services.AddScoped<ISeriesEntitiesService, SeriesEntitiesService>();
             services.AddScoped<IPagerService, PagerService>();
             services.AddScoped<IRenderService, RenderService>();
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));

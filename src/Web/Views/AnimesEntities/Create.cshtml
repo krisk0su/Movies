@@ -1,0 +1,42 @@
+﻿@model CreateAnimesEntityViewModel
+@{
+    ViewData["Title"] = "Create Anime Episode";
+}
+
+<div class="container" style="background-color: lightblue">
+    <h1 style="text-align: center">Add Anime Episode</h1>
+    <div>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input id="Name" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Episode" class="control-label"></label>
+                <input asp-for="Episode" class="form-control" />
+                <span asp-validation-for="Episode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Season" class="control-label"></label>
+                <input asp-for="Season" class="form-control" />
+                <span asp-validation-for="Season" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poster" class="control-label"></label>
+                <input id="Poster" asp-for="Poster" class="form-control" />
+                <span asp-validation-for="Poster" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input hidden asp-for="AnimeId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

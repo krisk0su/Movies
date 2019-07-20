@@ -6,9 +6,9 @@
 
     public class SeriesSeasonViewComponent:ViewComponent
     {
-        private readonly ISeriesEntityService _seriesEntityService;
+        private readonly ISeriesEntitiesService _seriesEntityService;
 
-        public SeriesSeasonViewComponent(ISeriesEntityService service)
+        public SeriesSeasonViewComponent(ISeriesEntitiesService service)
         {
             this._seriesEntityService = service;
         }

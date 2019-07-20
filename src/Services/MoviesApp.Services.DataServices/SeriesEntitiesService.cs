@@ -9,11 +9,11 @@
     using System;
     using System.Collections.Generic;
 
-    public class SeriesEntityService:ISeriesEntityService
+    public class SeriesEntitiesService:ISeriesEntitiesService
     {
         private readonly IRepository<SeriesEntity> _repository;
 
-        public SeriesEntityService(IRepository<SeriesEntity> repository)
+        public SeriesEntitiesService(IRepository<SeriesEntity> repository)
         {
             this._repository = repository;
         }
