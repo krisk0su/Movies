@@ -4,13 +4,13 @@
 
     public class CreateSeasonViewModel
     {
-        public CreateSeasonViewModel(Guid seriesId, int season)
+        public CreateSeasonViewModel(Guid id, int season)
         {
             this.Season = season;
-            this.SeriesId = seriesId;
+            this.Id = id;
         }
 
-        public Guid SeriesId { get; set; }
+        public Guid Id { get; set; }
         public int Season { get; set; }
     }
 }

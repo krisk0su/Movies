@@ -1,18 +1,22 @@
 ﻿namespace MoviesApp.Web.Views.Shared.Components.AnimesTable
 {
     using Microsoft.AspNetCore.Mvc;
+    using Services.DataServices.Contracts;
+    using System;
 
     public class AnimesTableViewComponent:ViewComponent
     {
-        public AnimesTableViewComponent()
+        private readonly IAnimesEntitiesService _animesEntityService;
+
+        public AnimesTableViewComponent(IAnimesEntitiesService service)
         {
-            
+            this._animesEntityService = service;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(Guid id)
         {
-
-            return this.View("Default");
+            var viewModel = this._animesEntityService.GetTable(id);
+            return this.View("Default", viewModel);
         }
     }
 }

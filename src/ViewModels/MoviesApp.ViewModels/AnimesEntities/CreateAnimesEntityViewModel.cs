@@ -5,6 +5,10 @@
 
     public class CreateAnimesEntityViewModel:IAnimeEntity
     {
+        public CreateAnimesEntityViewModel()
+        {
+            
+        }
         public CreateAnimesEntityViewModel(Guid animeId, string name, string poster)
         {
             this.AnimeId = animeId;

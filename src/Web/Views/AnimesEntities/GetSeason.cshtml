@@ -1,0 +1,8 @@
+﻿@model CreateSeasonViewModel
+@{
+    ViewData["Title"] = "Anime Season";
+}
+<div class="container d-flex justify-content-center">
+    @await Component.InvokeAsync("AnimesSeason", this.Model)
+</div>
+

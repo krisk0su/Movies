@@ -72,7 +72,7 @@
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IActorsService, ActorsService>();
             services.AddScoped<IAnimesService, AnimesService>();
-            services.AddScoped<IAnimesEntitiesService, IAnimesEntitiesService>();
+            services.AddScoped<IAnimesEntitiesService, AnimesEntitiesService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IMoviesService, MoviesService>();
             services.AddScoped<IMoviesActorsService, MoviesActorsService>();

@@ -5,6 +5,10 @@
 
     public class CreateSeriesEntityViewModel:ISeriesEntity
     {
+        public CreateSeriesEntityViewModel()
+        {
+            
+        }
         public CreateSeriesEntityViewModel(Guid seriesId, string name, string poster)
         {
             this.SeriesId = seriesId;

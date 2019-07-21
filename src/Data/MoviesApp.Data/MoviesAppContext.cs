@@ -11,23 +11,19 @@
     
     public class MoviesAppContext : IdentityDbContext<MoviesAppUser>
     {
-        public DbSet<Movie> Movies { get; set; }
-
-        public DbSet<Category> Categories { get; set; }
-
-        public DbSet<MoviesCategories> MoviesCategories { get; set; }
+        public DbSet<Anime> Animes { get; set; }
+        public DbSet<AnimeEntity> AnimeEntities { get; set; }
 
         public DbSet<Actor> Actors { get; set; }
-
+        public DbSet<Movie> Movies { get; set; }
         public DbSet<MoviesActors> MoviesActors { get; set; }
+        public DbSet<MoviesCategories> MoviesCategories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public DbSet<Series> Series { get; set; }
-
         public DbSet<SeriesEntity> SeriesEntity { get; set; }
 
-        public DbSet<Anime> Animes { get; set; }
-
-        public DbSet<AnimeEntity> AnimeEntities { get; set; }
+       
 
         public MoviesAppContext(DbContextOptions<MoviesAppContext> options)
             : base(options)

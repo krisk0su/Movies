@@ -71,7 +71,7 @@
         public SeasonEntitiesViewModel GetSeasonEntities(CreateSeasonViewModel model)
         {
             var entities = this._repository.All()
-                .Where(x => x.SeriesId == model.SeriesId 
+                .Where(x => x.SeriesId == model.Id 
                             && x.Season == model.Season)
                 .OrderBy(x => x.Season)
                 .ToList();

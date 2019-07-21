@@ -6,6 +6,8 @@
     using System.Threading.Tasks;
     using System;
     using Helpers.Contracts;
+    using ViewModels.SeriesEntities;
+
 
     public class AnimesController : Controller
     {
@@ -49,6 +51,12 @@
                 ControllerContext,
                 entities);
 
+            return this.View(viewModel);
+        }
+
+        public IActionResult Season(Guid seriesId, int season)
+        {
+            var viewModel = new CreateSeasonViewModel(seriesId, season);
             return this.View(viewModel);
         }
     }
