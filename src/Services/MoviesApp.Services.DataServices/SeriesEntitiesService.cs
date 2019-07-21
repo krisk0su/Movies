@@ -8,6 +8,8 @@
     using System.Linq;
     using System;
     using System.Collections.Generic;
+    using ViewModels.SeasonEpisodes;
+
 
     public class SeriesEntitiesService:ISeriesEntitiesService
     {

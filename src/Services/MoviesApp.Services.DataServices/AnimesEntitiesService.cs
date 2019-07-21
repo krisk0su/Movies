@@ -7,7 +7,7 @@
     using Data.Models.Animes;
     using System;
     using System.Linq;
-    using ViewModels.SeriesEntities;
+    using ViewModels.SeasonEpisodes;
     using System.Collections.Generic;
 
     public class AnimesEntitiesService:IAnimesEntitiesService
@@ -69,6 +69,20 @@
             }
 
             var viewModel = new SeasonEntitiesViewModel(tempCollection);
+
+            return viewModel;
+        }
+        public DisplayEpisodeViewModel Episode(int id)
+        {
+            var episode = this._animesEntitiesRepository
+                .All()
+                .Single(x => x.Id == id);
+
+            var viewModel = new DisplayEpisodeViewModel(episode.Id,
+                episode.Name,
+                episode.Poster,
+                episode.Link1,
+                episode.Link2);
 
             return viewModel;
         }

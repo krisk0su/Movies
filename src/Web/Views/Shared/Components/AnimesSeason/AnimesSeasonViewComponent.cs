@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Services.DataServices.Contracts;
-    using ViewModels.SeriesEntities;
+    using ViewModels.SeasonEpisodes;
 
     public class AnimesSeasonViewComponent:ViewComponent
     {

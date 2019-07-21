@@ -1,4 +1,4 @@
-﻿namespace MoviesApp.ViewModels.SeriesEntities
+﻿namespace MoviesApp.ViewModels.SeasonEpisodes
 {
     public class SeasonEntityViewModel
     {

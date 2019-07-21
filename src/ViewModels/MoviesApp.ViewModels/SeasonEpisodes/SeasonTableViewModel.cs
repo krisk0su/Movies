@@ -1,9 +1,8 @@
-﻿namespace MoviesApp.ViewModels.SeriesEntities
+﻿using System;
+using System.Collections.Generic;
+
+namespace MoviesApp.ViewModels.SeasonEpisodes
 {
-    using System;
-    using System.Collections.Generic;
-
-
     public class SeasonTableViewModel
     {
         public SeasonTableViewModel(Guid seriesId, IEnumerable<int> seasons)

@@ -5,6 +5,8 @@
     using Services.DataServices.Contracts;
     using ViewModels.SeriesEntities;
     using System.Threading.Tasks;
+    using ViewModels.SeasonEpisodes;
+
 
     public class SeriesEntitiesController : Controller
     {

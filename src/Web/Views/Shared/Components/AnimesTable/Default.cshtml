@@ -1,4 +1,4 @@
-﻿@model SeasonTableViewModel
+﻿@model MoviesApp.ViewModels.SeasonEpisodes.SeasonTableViewModel
 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
     <table class="table table-dark">
         <thead>
@@ -14,7 +14,7 @@
                     <th scope="row">@num</th>
                     <td>
                         <a asp-controller="AnimesEntities"
-                           asp-action="GetSeason"
+                           asp-action="Season"
                            asp-route-seriesId="@Model.SeriesId"
                            asp-route-season="@num"
                            style="color: aliceblue">Watch Season @num</a>

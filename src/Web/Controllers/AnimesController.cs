@@ -6,7 +6,9 @@
     using System.Threading.Tasks;
     using System;
     using Helpers.Contracts;
-    using ViewModels.SeriesEntities;
+    using ViewModels.SeasonEpisodes;
+
+
 
 
     public class AnimesController : Controller

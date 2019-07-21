@@ -1,6 +1,7 @@
-﻿namespace MoviesApp.ViewModels.SeriesEntities
+﻿namespace MoviesApp.ViewModels.SeasonEpisodes
 {
     using System;
+
 
     public class CreateSeasonViewModel
     {

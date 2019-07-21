@@ -1,13 +1,11 @@
-﻿using MoviesApp.ViewModels.SeriesEntities;
-
-namespace MoviesApp.Web.Controllers
+﻿namespace MoviesApp.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using System;
     using ViewModels.AnimesEntities;
     using Services.DataServices.Contracts;
     using System.Threading.Tasks;
-
+    using ViewModels.SeasonEpisodes;
 
     public class AnimesEntitiesController : Controller
     {
@@ -28,17 +26,17 @@ namespace MoviesApp.Web.Controllers
         {
             Console.WriteLine();
             var id = await this._animesEntitiesService.Create(model);
-            return this.RedirectToAction("Details", new {id = id});
+            return this.RedirectToAction("Episode", new {id = id});
         }
 
-        public IActionResult Details(int id)
-        {
-            return this.Content("creted");
-        }
-
-        public IActionResult GetSeason(Guid seriesId, int season)
+        public IActionResult Season(Guid seriesId, int season)
         {
             var viewModel = new CreateSeasonViewModel(seriesId, season);
+            return this.View(viewModel);
+        }
+        public IActionResult Episode(int id)
+        {
+            var viewModel = this._animesEntitiesService.Episode(id);
             return this.View(viewModel);
         }
     }

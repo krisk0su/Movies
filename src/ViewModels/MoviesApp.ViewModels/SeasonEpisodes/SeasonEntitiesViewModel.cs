@@ -1,7 +1,8 @@
-﻿namespace MoviesApp.ViewModels.SeriesEntities
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MoviesApp.ViewModels.SeriesEntities;
 
+namespace MoviesApp.ViewModels.SeasonEpisodes
+{
     public class SeasonEntitiesViewModel
     {
         public SeasonEntitiesViewModel(IEnumerable<SeasonEntityViewModel> entities)

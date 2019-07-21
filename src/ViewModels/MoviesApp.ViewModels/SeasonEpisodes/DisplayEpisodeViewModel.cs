@@ -1,7 +1,19 @@
-﻿namespace MoviesApp.ViewModels.SeriesEntities
+﻿namespace MoviesApp.ViewModels.SeasonEpisodes
 {
     public class DisplayEpisodeViewModel
     {
+        public DisplayEpisodeViewModel(int id, string name,
+            string poster,
+            string link1,
+            string link2)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Trailer = string.Empty;
+            this.Poster = poster;
+            this.Link1 = link1;
+            this.Link2 = link2;
+        }
         public DisplayEpisodeViewModel(int id, string name, string trailer,
             string poster,
             string link1,

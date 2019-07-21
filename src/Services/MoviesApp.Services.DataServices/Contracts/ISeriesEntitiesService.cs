@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Services.DataServices.Contracts
+﻿using MoviesApp.ViewModels.SeasonEpisodes;
+
+namespace MoviesApp.Services.DataServices.Contracts
 {
     using ViewModels.SeriesEntities;
     using System.Threading.Tasks;
