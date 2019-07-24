@@ -58,11 +58,10 @@
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Edit(CreateMovieViewModel model)
+        public async Task<IActionResult> Edit(EditMovieViewModel model)
         {
             var id = await this._moviesService.Update(model);
-            var viewModel = this._moviesService.GetById(id);
-            return this.RedirectToAction("Details", viewModel);
+            return this.RedirectToAction("Details", new {id = id});
         }
 
         public IActionResult Details(Guid id)

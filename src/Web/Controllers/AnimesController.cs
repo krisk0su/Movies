@@ -38,12 +38,20 @@
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(Guid id)
         {
-
-            return this.Content("trying to edit");
+            var viewModel = this._animesService.GetToEdit(id);
+            return this.View(viewModel);
         }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditAnimeViewModel model)
+        {
+            var id = await this._animesService.Update(model);
+            return this.RedirectToAction("Details", new {id = id});
+        }
+
         public IActionResult Details(Guid id)
         {
-            var viewModel = this._animesService.GetAnimeDetails(id);
+            var viewModel = this._animesService.GetById(id);
             return this.View(viewModel);
         }
 

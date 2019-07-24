@@ -1,10 +1,10 @@
-﻿@model EditMovieViewModel
+﻿@model EditAnimeViewModel
 @{
-    ViewData["Title"] = "Edit Movie";
+    ViewData["Title"] = "Edit Anime";
 }
 
 <div class="container" style="background-color: lightblue">
-    <h1 style="text-align: center">GetById Movie</h1>
+    <h1 style="text-align: center">Edit Anime</h1>
     <div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -18,7 +18,6 @@
                 <textarea id="Plot" asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Poster" class="control-label"></label>
                 <input id="Poster" asp-for="Poster" class="form-control"></input>
@@ -26,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ReleaseDate" class="control-label"></label>
-                <input id="Date" asp-for="ReleaseDate" class="form-control"></input>
+                <input id="ReleaseDate" asp-for="ReleaseDate" class="form-control"></input>
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,33 +33,8 @@
                 <input id="Rating" asp-for="Rating" class="form-control"></input>
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Genre" class="control-label"></label>
-                <input id="Genre" asp-for="Genre" class="form-control"></input>
-                <span asp-validation-for="Genre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Actors" class="control-label"></label>
-                <input id="Actors" asp-for="Actors" class="form-control"></input>
-                <span asp-validation-for="Actors" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trailer" class="control-label"></label>
-                <input asp-for="Trailer" class="form-control"></input>
-                <span asp-validation-for="Trailer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Link1" class="control-label"></label>
-                <input asp-for="Link1" class="form-control"></input>
-                <span asp-validation-for="Link1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Link2" class="control-label"></label>
-                <input asp-for="Link2" class="form-control"></input>
-                <span asp-validation-for="Link2" class="text-danger"></span>
-            </div>
             <div class="form-group d-flex justify-content-center">
-                <input id="ratingButton" onclick="clicked()" type="button" value="Get Movie Stats" class="btn btn-dark" />
+                <input id="ratingButton" onclick="clicked()" type="button" value="Get Year & Rating" class="btn btn-dark" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-primary" />
@@ -69,7 +43,7 @@
     </div>
 </div>
 @section scripts {
-    <script src="~/js/getMoviesStats.js">
+    <script src="~/js/getAnimesStats.js">
     </script>
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

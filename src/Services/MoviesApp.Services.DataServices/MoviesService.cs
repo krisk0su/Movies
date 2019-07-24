@@ -96,12 +96,12 @@
             return vm;
         }
 
-        public CreateMovieViewModel GetToEdit(Guid id)
+        public EditMovieViewModel GetToEdit(Guid id)
         {
             var movie = this._repository.All()
                 .Single(x => x.Id == id);
 
-            var viewModel = new CreateMovieViewModel()
+            var viewModel = new EditMovieViewModel()
             {
                 Id = movie.Id,
                 Name = movie.Name,
@@ -118,7 +118,7 @@
             return viewModel;
         }
 
-        public async Task<Guid> Update(CreateMovieViewModel model)
+        public async Task<Guid> Update(EditMovieViewModel model)
         {
             var movie = this._repository.All()
                 .Single(x => x.Id == model.Id);

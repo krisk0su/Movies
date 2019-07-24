@@ -10,9 +10,12 @@
     {
         Task<Guid> Create(CreateAnimeViewModel model);
 
-        DetailsAnimeViewModel GetAnimeDetails(Guid id);
+        DetailsAnimeViewModel GetById(Guid id);
 
         IEnumerable<IDisplayable> GetAllAnimes();
 
+        EditAnimeViewModel GetToEdit(Guid id);
+
+        Task<Guid> Update(EditAnimeViewModel model);
     }
 }

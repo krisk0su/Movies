@@ -17,8 +17,8 @@
  
         IndexViewModel IndexMovies();
 
-        CreateMovieViewModel GetToEdit(Guid id);
+        EditMovieViewModel GetToEdit(Guid id);
 
-        Task<Guid> Update(CreateMovieViewModel model);
+        Task<Guid> Update(EditMovieViewModel model);
     }
 }

@@ -38,7 +38,40 @@
             return anime.Id;
         }
 
-        public DetailsAnimeViewModel GetAnimeDetails(Guid id)
+        public EditAnimeViewModel GetToEdit(Guid id)
+        {
+            var anime = this._repository.All()
+                .Single(x => x.Id == id);
+
+            var viewModel = new EditAnimeViewModel()
+            {
+                Id = anime.Id,
+                Name = anime.Name,
+                Description = anime.Description,
+                Poster = anime.Poster,
+                Rating = anime.Rating,
+                ReleaseDate = anime.ReleaseDate
+            };
+
+            return viewModel;
+        }
+
+        public async Task<Guid> Update(EditAnimeViewModel model)
+        {
+            var anime = this._repository.All()
+                .Single(x => x.Id == model.Id);
+
+            anime.Name = model.Name;
+            anime.Description = model.Description;
+            anime.Poster = model.Poster;
+            anime.Rating = model.Rating;
+
+            this._repository.Update(anime);
+            await this._repository.SaveChangesAsync();
+
+            return anime.Id;
+        }
+        public DetailsAnimeViewModel GetById(Guid id)
         {
             var anime = this._repository.All()
                 .Single(x => x.Id == id);
@@ -65,5 +98,7 @@
                 .OrderBy(x=> x.Rating)
                 .ToList();
         }
+
+        
     }
 }
