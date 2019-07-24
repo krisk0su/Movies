@@ -16,5 +16,9 @@
         IEnumerable<IDisplayable> AllMovies();
  
         IndexViewModel IndexMovies();
+
+        CreateMovieViewModel GetToEdit(Guid id);
+
+        Task<Guid> Update(CreateMovieViewModel model);
     }
 }

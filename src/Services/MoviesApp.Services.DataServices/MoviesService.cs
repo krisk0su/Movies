@@ -95,5 +95,47 @@
 
             return vm;
         }
+
+        public CreateMovieViewModel GetToEdit(Guid id)
+        {
+            var movie = this._repository.All()
+                .Single(x => x.Id == id);
+
+            var viewModel = new CreateMovieViewModel()
+            {
+                Id = movie.Id,
+                Name = movie.Name,
+                Description = movie.Description,
+                Poster = movie.Poster,
+                Rating = movie.Rating,
+                Link1 = movie.Link1,
+                Link2 = movie.Link2,
+                Actors = string.Join(",", movie.MoviesActors.Select(x=> x.Actor.Name)),
+                Genre = string.Join(", ", movie.MoviesCategories.Select(x=> x.Category.Name))
+
+            };
+
+            return viewModel;
+        }
+
+        public async Task<Guid> Update(CreateMovieViewModel model)
+        {
+            var movie = this._repository.All()
+                .Single(x => x.Id == model.Id);
+
+            movie.Name = model.Name;
+            movie.Description = model.Description;
+            movie.Poster = model.Poster;
+            movie.Rating = model.Rating;
+            movie.Link1 = model.Link1;
+            movie.Link2 = model.Link2;
+            movie.Trailer = model.Trailer;
+            movie.ReleaseDate = model.ReleaseDate;
+
+            this._repository.Update(movie);
+            await this._repository.SaveChangesAsync();
+
+            return movie.Id;
+        }
     }
 }

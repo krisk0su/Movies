@@ -52,7 +52,16 @@
                 .HasForeignKey(x => x.CategoryId);
 
             //TODO MOVIES ACTORS
-                
+            builder.Entity<MoviesActors>()
+                .HasOne(x => x.Movie)
+                .WithMany(x => x.MoviesActors)
+                .HasForeignKey(x => x.MovieId);
+
+            builder.Entity<MoviesActors>()
+                .HasOne(x => x.Actor)
+                .WithMany(x => x.MoviesActors)
+                .HasForeignKey(x => x.ActorId);
+
             base.OnModelCreating(builder);
         }
     }

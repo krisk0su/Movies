@@ -19,13 +19,19 @@
         </div>
         @if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole("Admin"))
         {
-            <div class="container d-flex justify-content-center">
+            <div class="container p-2 d-flex justify-content-center">
                 <a asp-controller="AnimesEntities"
                    asp-action="Create"
                    asp-route-animeId="@Model.Id"
                    asp-route-name="@Model.Name"
                    asp-route-poster="@Model.Poster"
-                   class="btn btn-primary"  role="button">Add Episode...</a>
+                   class="btn btn-primary" role="button">Add Episode...</a>
+            </div>
+            <div class="container p-2 d-flex justify-content-center">
+                <a asp-controller="Animes"
+                   asp-action="Edit"
+                   asp-route-animeId="@Model.Id"
+                   class="btn btn-primary" role="button">Edit Aime</a>
             </div>
         }
         <!-- Details -->
@@ -56,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            @await Component.InvokeAsync("AnimesTable", new {id = this.Model.Id})
+            @await Component.InvokeAsync("AnimesTable", new { id = this.Model.Id })
         </div>
     </div>
 </section>

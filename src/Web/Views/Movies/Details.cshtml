@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Movie Details";
 }
-
+@inject SignInManager<MoviesAppUser> SignInManager
 <section class="py-5 bg-white">
     <div class="container-fluid">
         <!-- Heading -->
@@ -17,6 +17,15 @@
                 </div>
             </div>
         </div>
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            <div class="container d-flex justify-content-center">
+                <a asp-controller="Movies"
+                   asp-action="Edit"
+                   asp-route-id="@Model.Id"
+                   class="btn btn-primary" role="button">Edit Movie!!!</a>
+            </div>
+        }
         <!-- Details -->
         <div class="row align-items-center">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">

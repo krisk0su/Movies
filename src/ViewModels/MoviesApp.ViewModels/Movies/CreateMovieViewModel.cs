@@ -1,14 +1,14 @@
-﻿using MoviesApp.Common.Movies;
-
-namespace MoviesApp.ViewModels.Movies
+﻿namespace MoviesApp.ViewModels.Movies
 {
    
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Common;
+    using MoviesApp.Common.Movies;
 
     public class CreateMovieViewModel:IMovie
     {
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public string Poster { get; set; }
@@ -28,12 +28,5 @@ namespace MoviesApp.ViewModels.Movies
         [Required]
         public string Actors { get; set; }
 
-        //Now categories are automatically updated from IMDB
-        //public IList<string> Categories { get; set; }
-
-        //public IEnumerable<SelectListItem> SelectList { get; set; }
-
-
-        
     }
 }

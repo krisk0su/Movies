@@ -6,10 +6,7 @@
     using System.Threading.Tasks;
     using System;
     using Helpers.Contracts;
-    using ViewModels.SeasonEpisodes;
-
-
-
+    using Microsoft.AspNetCore.Authorization;
 
     public class AnimesController : Controller
     {
@@ -23,12 +20,13 @@
             this._renderService = renderService;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             var viewModel = new CreateAnimeViewModel();
             return View(viewModel);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateAnimeViewModel model)
         {
@@ -37,7 +35,12 @@
             return this.RedirectToAction("Details", new {id = id});
 
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(Guid id)
+        {
 
+            return this.Content("trying to edit");
+        }
         public IActionResult Details(Guid id)
         {
             var viewModel = this._animesService.GetAnimeDetails(id);
@@ -53,12 +56,6 @@
                 ControllerContext,
                 entities);
 
-            return this.View(viewModel);
-        }
-
-        public IActionResult Season(Guid seriesId, int season)
-        {
-            var viewModel = new CreateSeasonViewModel(seriesId, season);
             return this.View(viewModel);
         }
     }

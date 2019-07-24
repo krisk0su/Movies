@@ -1,11 +1,9 @@
-﻿using MoviesApp.Common.Movies;
-
-namespace MoviesApp.Data.Models.Movies
+﻿namespace MoviesApp.Data.Models.Movies
 {
     using System;
     using Contracts;
     using System.Collections.Generic;
-    using Common;
+    using MoviesApp.Common.Movies;
 
     public class Movie : BaseModel<Guid>, IMovie
     {
@@ -32,7 +30,5 @@ namespace MoviesApp.Data.Models.Movies
 
         public virtual HashSet<MoviesCategories> MoviesCategories { get; set; }
 
-
-     
     }
 }

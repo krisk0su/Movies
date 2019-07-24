@@ -9,14 +9,14 @@
     using Helpers.Contracts;
 
 
-    public class MoviesController:Controller
+    public class MoviesController : Controller
     {
         private readonly IMoviesService _moviesService;
 
         private readonly IMoviesCategoriesService _moviesCategoriesService;
         private readonly IRenderService _renderService;
 
-        public MoviesController(IMoviesService moviesService, 
+        public MoviesController(IMoviesService moviesService,
             IMoviesCategoriesService mvService,
             IRenderService renderService)
         {
@@ -49,6 +49,21 @@
 
             return this.RedirectToAction("Movies");
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(Guid id)
+        {
+            var viewModel = _moviesService.GetToEdit(id);
+            return this.View(viewModel);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(CreateMovieViewModel model)
+        {
+            var id = await this._moviesService.Update(model);
+            var viewModel = this._moviesService.GetById(id);
+            return this.RedirectToAction("Details", viewModel);
+        }
 
         public IActionResult Details(Guid id)
         {
@@ -58,29 +73,30 @@
             return this.View(viewModel);
         }
 
+
         public IActionResult Movies(int currentIndex = 1)
         {
             var entities = this._moviesService.AllMovies();
 
-            var viewModel = this._renderService.GetViewModel(currentIndex, 
-                null, 
-                ControllerContext, 
+            var viewModel = this._renderService.GetViewModel(currentIndex,
+                null,
+                ControllerContext,
                 entities);
 
 
             return this.View(viewModel);
         }
 
-        public IActionResult MoviesByCategory(string name , int currentIndex = 1 )
+        public IActionResult MoviesByCategory(string name, int currentIndex = 1)
         {
             ViewData["category"] = name;
 
             var entities = this._moviesCategoriesService
                 .GetMoviesByCategory(name);
 
-            var viewModel = this._renderService.GetViewModel(currentIndex, 
-                name, 
-                ControllerContext, 
+            var viewModel = this._renderService.GetViewModel(currentIndex,
+                name,
+                ControllerContext,
                 entities);
 
 
