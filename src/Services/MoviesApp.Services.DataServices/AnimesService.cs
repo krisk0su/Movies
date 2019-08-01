@@ -98,7 +98,5 @@
                 .OrderBy(x=> x.Rating)
                 .ToList();
         }
-
-        
     }
 }

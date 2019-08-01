@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Services.DataServices
+﻿using MoviesApp.ViewModels.AnimesEntities;
+
+namespace MoviesApp.Services.DataServices
 {
     using System.Threading.Tasks;
     using Contracts;
@@ -108,6 +110,13 @@
                 episode.Link2);
 
             return viewModel;
+        }
+
+        public EditAnimesEntityViewModel GetToEdit(int id)
+        {
+            var entity = this._repository.All().Single(x => x.Id == id);
+
+            entity.
         }
     }
 }

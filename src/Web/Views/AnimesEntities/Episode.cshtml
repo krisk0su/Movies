@@ -2,6 +2,17 @@
 @{
     ViewData["Title"] = "Anime Episode";
 }
+@inject SignInManager<MoviesAppUser> SignInManager
+@if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole("Admin"))
+{
+   
+    <div class="container p-2 d-flex justify-content-center">
+        <a asp-controller="AnimesEntities"
+           asp-action="Edit"
+           asp-route-id="@Model.Id"
+           class="btn btn-primary" role="button">Edit Episode</a>
+    </div>
+}
 
 <section class="py-5 bg-white">
     <div class="container-fluid">
@@ -69,4 +80,4 @@
     </div>
 </section>
 
-<!-- Actor cast -->
+
