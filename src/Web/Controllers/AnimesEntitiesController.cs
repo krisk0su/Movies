@@ -32,13 +32,13 @@
             return this.RedirectToAction("Episode", new {id = id});
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult Edit(int id)
-        {
-            var viewModel = this._animesEntitiesService.GetToEdit(id);
+        //[Authorize(Roles = "Admin")]
+        //public IActionResult Edit(int id)
+        //{
+        //    var viewModel = this._animesEntitiesService.GetToEdit(id);
 
-            return null;
-        }
+        //    return null;
+        //}
         public IActionResult Season(Guid seriesId, int season)
         {
             var viewModel = new CreateSeasonViewModel(seriesId, season);

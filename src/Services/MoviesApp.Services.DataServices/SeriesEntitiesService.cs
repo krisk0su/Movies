@@ -112,11 +112,6 @@ namespace MoviesApp.Services.DataServices
             return viewModel;
         }
 
-        public EditAnimesEntityViewModel GetToEdit(int id)
-        {
-            var entity = this._repository.All().Single(x => x.Id == id);
-
-            entity.
-        }
+        
     }
 }
