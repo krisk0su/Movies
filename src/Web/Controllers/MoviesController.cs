@@ -35,19 +35,19 @@
         [HttpPost]
         public async Task<IActionResult> Create(CreateMovieViewModel model)
         {
-            var movieId = await this._moviesService.Create(model);
-            //try
-            //{
+    
+            try
+            {
+                var movieId = await this._moviesService.Create(model);
+                return this.RedirectToAction("AllMovies");
+            }
+            catch (Exception e)
+            {
 
-            //    return this.RedirectToAction("AllMovies");
-            //}
-            //catch (Exception e)
-            //{
+                return this.View("NameError");
+            }
 
-            //    return this.View("NameError");
-            //}
-
-            return this.RedirectToAction("Movies");
+           
         }
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(Guid id)
@@ -72,7 +72,8 @@
             return this.View(viewModel);
         }
 
-
+        [Route("")]
+        [Route("/home")]
         public IActionResult Movies(int currentIndex = 1)
         {
             var entities = this._moviesService.AllMovies();

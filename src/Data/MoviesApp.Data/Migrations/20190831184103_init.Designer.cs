@@ -10,14 +10,14 @@ using MoviesApp.Data;
 namespace MoviesApp.Data.Migrations
 {
     [DbContext(typeof(MoviesAppContext))]
-    [Migration("20190707204500_seriesEntityPoster")]
-    partial class seriesEntityPoster
+    [Migration("20190831184103_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -144,6 +144,53 @@ namespace MoviesApp.Data.Migrations
                     b.ToTable("Actors");
                 });
 
+            modelBuilder.Entity("MoviesApp.Data.Models.Animes.Anime", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Poster");
+
+                    b.Property<double>("Rating");
+
+                    b.Property<string>("ReleaseDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Animes");
+                });
+
+            modelBuilder.Entity("MoviesApp.Data.Models.Animes.AnimeEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid>("AnimeId");
+
+                    b.Property<int>("Episode");
+
+                    b.Property<string>("Link1");
+
+                    b.Property<string>("Link2");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Poster");
+
+                    b.Property<int>("Season");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimeId");
+
+                    b.ToTable("AnimeEntities");
+                });
+
             modelBuilder.Entity("MoviesApp.Data.Models.Categories.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -164,25 +211,22 @@ namespace MoviesApp.Data.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<string>("Description")
-                        .IsRequired();
+                    b.Property<string>("Description");
 
-                    b.Property<string>("Link")
-                        .IsRequired();
+                    b.Property<string>("Link1");
+
+                    b.Property<string>("Link2");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<string>("Poster")
-                        .IsRequired();
+                    b.Property<string>("Poster");
 
                     b.Property<double>("Rating");
 
-                    b.Property<string>("ReleaseDate")
-                        .IsRequired();
+                    b.Property<string>("ReleaseDate");
 
-                    b.Property<string>("Trailer")
-                        .IsRequired();
+                    b.Property<string>("Trailer");
 
                     b.HasKey("Id");
 
@@ -312,6 +356,10 @@ namespace MoviesApp.Data.Migrations
 
                     b.Property<int>("Episode");
 
+                    b.Property<string>("Link1");
+
+                    b.Property<string>("Link2");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("Poster");
@@ -371,6 +419,14 @@ namespace MoviesApp.Data.Migrations
                     b.HasOne("MoviesApp.Data.Models.MoviesAppUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MoviesApp.Data.Models.Animes.AnimeEntity", b =>
+                {
+                    b.HasOne("MoviesApp.Data.Models.Animes.Anime", "Anime")
+                        .WithMany("AnimeEntities")
+                        .HasForeignKey("AnimeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

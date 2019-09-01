@@ -22,6 +22,22 @@ namespace MoviesApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Animes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Poster = table.Column<string>(nullable: true),
+                    Rating = table.Column<double>(nullable: false),
+                    ReleaseDate = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Animes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -79,12 +95,13 @@ namespace MoviesApp.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
-                    ReleaseDate = table.Column<string>(nullable: false),
-                    Link = table.Column<string>(nullable: false),
-                    Poster = table.Column<string>(nullable: false),
-                    Trailer = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Poster = table.Column<string>(nullable: true),
                     Rating = table.Column<double>(nullable: false),
+                    Trailer = table.Column<string>(nullable: true),
+                    Link1 = table.Column<string>(nullable: true),
+                    Link2 = table.Column<string>(nullable: true),
+                    ReleaseDate = table.Column<string>(nullable: true),
                     CreatedOn = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -99,9 +116,9 @@ namespace MoviesApp.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    Rating = table.Column<double>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Poster = table.Column<string>(nullable: true),
+                    Rating = table.Column<double>(nullable: false),
                     ReleaseDate = table.Column<string>(nullable: true),
                     Actors = table.Column<string>(nullable: true),
                     Genre = table.Column<string>(nullable: true)
@@ -109,6 +126,31 @@ namespace MoviesApp.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Series", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AnimeEntities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Poster = table.Column<string>(nullable: true),
+                    Link1 = table.Column<string>(nullable: true),
+                    Link2 = table.Column<string>(nullable: true),
+                    Season = table.Column<int>(nullable: false),
+                    Episode = table.Column<int>(nullable: false),
+                    AnimeId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AnimeEntities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AnimeEntities_Animes_AnimeId",
+                        column: x => x.AnimeId,
+                        principalTable: "Animes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -279,6 +321,9 @@ namespace MoviesApp.Data.Migrations
                     Season = table.Column<int>(nullable: false),
                     Episode = table.Column<int>(nullable: false),
                     Trailer = table.Column<string>(nullable: true),
+                    Poster = table.Column<string>(nullable: true),
+                    Link1 = table.Column<string>(nullable: true),
+                    Link2 = table.Column<string>(nullable: true),
                     SeriesId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -291,6 +336,11 @@ namespace MoviesApp.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AnimeEntities_AnimeId",
+                table: "AnimeEntities",
+                column: "AnimeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -360,6 +410,9 @@ namespace MoviesApp.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AnimeEntities");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -382,6 +435,9 @@ namespace MoviesApp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "SeriesEntity");
+
+            migrationBuilder.DropTable(
+                name: "Animes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
