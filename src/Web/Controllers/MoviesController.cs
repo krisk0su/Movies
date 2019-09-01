@@ -28,7 +28,7 @@
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            var vm = new CreateMovieViewModel() /*{SelectList = this._categoryService.SelectList()}*/;
+            var vm = new CreateMovieViewModel();
             return View(vm);
         }
         [Authorize(Roles = "Admin")]
@@ -39,7 +39,7 @@
             try
             {
                 var movieId = await this._moviesService.Create(model);
-                return this.RedirectToAction("AllMovies");
+                return this.Redirect("/home");
             }
             catch (Exception e)
             {
